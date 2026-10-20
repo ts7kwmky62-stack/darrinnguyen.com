@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Not found · GTRG</title>
+<meta name="description" content="Gannon Talos Research Group: practical AI for businesses that build, fix and sell real things.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Bronze = Talos. */
+:root {
+  --bg: #eef0ec;
+  --panel: #f8f9f6;
+  --ink: #1b2027;
+  --muted: #5b6370;
+  --line: #d3d7cf;
+  --bronze: #8a5a22;
+  --bronze-soft: #f0e2cc;
+  --ok: #2f6b4a;
+  --ok-soft: #dcebe2;
+  --next: #8a5a22;
+  --next-soft: #f0e2cc;
+  --park: #5b6370;
+  --park-soft: #e2e5e0;
+  --open: #9b3b2e;
+  --open-soft: #f3dcd7;
+  --display: "Chakra Petch", "Arial Narrow", system-ui, sans-serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12161c; --panel: #1a1f27; --ink: #e7e9ec; --muted: #9aa3ae; --line: #2c333d;
+    --bronze: #d19a55; --bronze-soft: #33281b;
+    --ok: #7cc39a; --ok-soft: #1c2e25; --next: #d19a55; --next-soft: #33281b;
+    --park: #9aa3ae; --park-soft: #252b33; --open: #e58b7c; --open-soft: #3a2421;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12161c; --panel: #1a1f27; --ink: #e7e9ec; --muted: #9aa3ae; --line: #2c333d;
+  --bronze: #d19a55; --bronze-soft: #33281b;
+  --ok: #7cc39a; --ok-soft: #1c2e25; --next: #d19a55; --next-soft: #33281b;
+  --park: #9aa3ae; --park-soft: #252b33; --open: #e58b7c; --open-soft: #3a2421;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55;
+}
+.wrap {
+  max-width: 1120px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 64px;
+  display: grid; gap: 40px;
+}
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--bronze); }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; letter-spacing: .01em; }
+h1 { font-size: clamp(40px, 7vw, 72px); line-height: 1; font-weight: 700; }
+h2 { font-size: 24px; font-weight: 600; }
+h3 { font-size: 20px; font-weight: 600; line-height: 1.2; }
+p { margin: 0; }
+.hero { display: grid; gap: 16px; max-width: 760px; }
+.hero p { font-size: 18px; color: var(--muted); max-width: 62ch; }
+
+.owner {
+  display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: center;
+  border-top: 2px solid var(--bronze); border-bottom: 1px solid var(--line); padding-block: 20px;
+}
+.sigil {
+  width: 56px; height: 56px; display: grid; place-items: center;
+  border: 2px solid var(--bronze); color: var(--bronze); font-family: var(--display); font-weight: 700; font-size: 18px;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  background: var(--bronze-soft);
+}
+.owner-text { display: grid; gap: 4px; min-width: 0; }
+.owner-text p { color: var(--muted); }
+.crew { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 6px; font-size: 14px; }
+.crew b { font-weight: 600; color: var(--ink); }
+
+
+.toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 16px; }
+.div {
+  display: grid; gap: 14px; align-content: start; padding: 20px; background: var(--panel); border: 1px solid var(--line); min-width: 0;
+}
+.div-head { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; }
+.code {
+  font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: .08em; color: var(--bronze);
+  border: 1px solid var(--bronze); padding: 3px 6px; margin-top: 2px;
+}
+.div p.what { color: var(--muted); font-size: 15px; }
+.lead { font-size: 13px; color: var(--muted); }
+.lead b { color: var(--ink); font-weight: 600; }
+.empty { font-size: 14px; color: var(--muted); }
+
+.rules { display: grid; gap: 16px; border-top: 1px solid var(--line); padding-top: 32px; }
+.rules ol { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; counter-reset: step; }
+.rules li { counter-increment: step; display: grid; gap: 6px; min-width: 0; }
+.rules li::before { content: "Step " counter(step); font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--bronze); }
+.rules li p { color: var(--muted); font-size: 15px; }
+footer { font-size: 13px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 8px 24px; border-top: 1px solid var(--line); padding-top: 20px; }
+
+@media (max-width: 720px) {
+    .rules ol { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .div { transition: opacity .2s ease; }
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+body { margin: 0; }
+.nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.nav-in { max-width: 1120px; margin: 0 auto; padding: 12px max(16px, env(safe-area-inset-left, 0px)); display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-family: var(--display); font-weight: 700; letter-spacing: .04em; }
+.brand .sigil { width: 34px; height: 34px; font-size: 12px; border-width: 1.5px; }
+.tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.tabs a { font: 500 13px/1 var(--body); padding: 9px 14px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); text-decoration: none; border-radius: 999px; }
+.tabs a:hover, .tabs a[aria-current="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.tabs a:focus-visible { outline: 2px solid var(--bronze); outline-offset: 2px; }
+section[id] { display: grid; gap: 16px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 16px; }
+.card { display: grid; gap: 10px; align-content: start; padding: 22px; background: var(--panel); border: 1px solid var(--line); border-top: 2px solid var(--bronze); }
+.card p, .card li { color: var(--muted); font-size: 15px; }
+.card ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+.note { font-size: 13px; color: var(--muted); }
+.principles { counter-reset: p; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 16px; }
+.principles li { counter-increment: p; display: grid; gap: 6px; padding: 18px; border: 1px solid var(--line); background: var(--panel); }
+.principles li::before { content: "0" counter(p); font-family: var(--mono); font-size: 12px; color: var(--bronze); letter-spacing: .1em; }
+.principles p { color: var(--muted); font-size: 15px; }
+.contact { border: 1px solid var(--bronze); background: var(--bronze-soft); padding: 28px; display: grid; gap: 10px; }
+.contact p { color: var(--ink); }
+.section-intro { color: var(--muted); max-width: 70ch; }
+@media (max-width: 720px) { .tabs a { padding: 8px 11px; font-size: 12px; } }
+</style>
+</head>
+<body><main class="wrap"><header class="hero"><span class="eyebrow">404</span><h1>Nothing here.</h1><p><a href="/" style="color:var(--bronze)">Back to GTRG</a></p></header></main></body></html>

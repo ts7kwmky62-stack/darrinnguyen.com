@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gannon Talos Research Group</title>
+<meta name="description" content="Gannon Talos Research Group: practical AI for businesses that build, fix and sell real things.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Bronze = Talos. */
+:root {
+  --bg: #eef0ec;
+  --panel: #f8f9f6;
+  --ink: #1b2027;
+  --muted: #5b6370;
+  --line: #d3d7cf;
+  --bronze: #8a5a22;
+  --bronze-soft: #f0e2cc;
+  --ok: #2f6b4a;
+  --ok-soft: #dcebe2;
+  --next: #8a5a22;
+  --next-soft: #f0e2cc;
+  --park: #5b6370;
+  --park-soft: #e2e5e0;
+  --open: #9b3b2e;
+  --open-soft: #f3dcd7;
+  --display: "Chakra Petch", "Arial Narrow", system-ui, sans-serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12161c; --panel: #1a1f27; --ink: #e7e9ec; --muted: #9aa3ae; --line: #2c333d;
+    --bronze: #d19a55; --bronze-soft: #33281b;
+    --ok: #7cc39a; --ok-soft: #1c2e25; --next: #d19a55; --next-soft: #33281b;
+    --park: #9aa3ae; --park-soft: #252b33; --open: #e58b7c; --open-soft: #3a2421;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12161c; --panel: #1a1f27; --ink: #e7e9ec; --muted: #9aa3ae; --line: #2c333d;
+  --bronze: #d19a55; --bronze-soft: #33281b;
+  --ok: #7cc39a; --ok-soft: #1c2e25; --next: #d19a55; --next-soft: #33281b;
+  --park: #9aa3ae; --park-soft: #252b33; --open: #e58b7c; --open-soft: #3a2421;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55;
+}
+.wrap {
+  max-width: 1120px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 64px;
+  display: grid; gap: 40px;
+}
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--bronze); }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; letter-spacing: .01em; }
+h1 { font-size: clamp(40px, 7vw, 72px); line-height: 1; font-weight: 700; }
+h2 { font-size: 24px; font-weight: 600; }
+h3 { font-size: 20px; font-weight: 600; line-height: 1.2; }
+p { margin: 0; }
+.hero { display: grid; gap: 16px; max-width: 760px; }
+.hero p { font-size: 18px; color: var(--muted); max-width: 62ch; }
+
+.owner {
+  display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: center;
+  border-top: 2px solid var(--bronze); border-bottom: 1px solid var(--line); padding-block: 20px;
+}
+.sigil {
+  width: 56px; height: 56px; display: grid; place-items: center;
+  border: 2px solid var(--bronze); color: var(--bronze); font-family: var(--display); font-weight: 700; font-size: 18px;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  background: var(--bronze-soft);
+}
+.owner-text { display: grid; gap: 4px; min-width: 0; }
+.owner-text p { color: var(--muted); }
+.crew { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 6px; font-size: 14px; }
+.crew b { font-weight: 600; color: var(--ink); }
+
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.stat { display: grid; gap: 2px; padding: 14px 16px; background: var(--panel); border: 1px solid var(--line); }
+.stat .n { font-family: var(--display); font-size: 32px; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1; }
+.stat .l { font-size: 13px; color: var(--muted); }
+.stat.ok .n { color: var(--ok); } .stat.next .n { color: var(--next); } .stat.park .n { color: var(--park); } .stat.open .n { color: var(--open); }
+
+.toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.filters button {
+  font: 500 13px/1 var(--body); padding: 9px 14px; border: 1px solid var(--line); background: var(--panel); color: var(--ink);
+  cursor: pointer; border-radius: 999px;
+}
+.filters button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.filters button:focus-visible, .seat:focus-visible { outline: 2px solid var(--bronze); outline-offset: 2px; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 16px; }
+.div {
+  display: grid; gap: 14px; align-content: start; padding: 20px; background: var(--panel); border: 1px solid var(--line); min-width: 0;
+}
+.div-head { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; }
+.code {
+  font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: .08em; color: var(--bronze);
+  border: 1px solid var(--bronze); padding: 3px 6px; margin-top: 2px;
+}
+.div p.what { color: var(--muted); font-size: 15px; }
+.lead { font-size: 13px; color: var(--muted); }
+.lead b { color: var(--ink); font-weight: 600; }
+.seats { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; border-top: 1px solid var(--line); padding-top: 12px; }
+.seat { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: baseline; font-size: 14px; }
+.seat .role { font-family: var(--mono); font-size: 13px; overflow-wrap: anywhere; }
+.seat .role small { display: block; font-family: var(--body); font-size: 12px; color: var(--muted); }
+.chip { font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; white-space: nowrap; }
+.chip.ok { background: var(--ok-soft); color: var(--ok); }
+.chip.next { background: var(--next-soft); color: var(--next); }
+.chip.park { background: var(--park-soft); color: var(--park); }
+.chip.open { background: var(--open-soft); color: var(--open); }
+.empty { font-size: 14px; color: var(--muted); }
+
+.rules { display: grid; gap: 16px; border-top: 1px solid var(--line); padding-top: 32px; }
+.rules ol { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; counter-reset: step; }
+.rules li { counter-increment: step; display: grid; gap: 6px; min-width: 0; }
+.rules li::before { content: "Step " counter(step); font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--bronze); }
+.rules li p { color: var(--muted); font-size: 15px; }
+footer { font-size: 13px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 8px 24px; border-top: 1px solid var(--line); padding-top: 20px; }
+
+@media (max-width: 720px) {
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rules ol { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .div { transition: opacity .2s ease; }
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+body { margin: 0; }
+.nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.nav-in { max-width: 1120px; margin: 0 auto; padding: 12px max(16px, env(safe-area-inset-left, 0px)); display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-family: var(--display); font-weight: 700; letter-spacing: .04em; }
+.brand .sigil { width: 34px; height: 34px; font-size: 12px; border-width: 1.5px; }
+.tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.tabs a { font: 500 13px/1 var(--body); padding: 9px 14px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); text-decoration: none; border-radius: 999px; }
+.tabs a:hover, .tabs a[aria-current="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.tabs a:focus-visible { outline: 2px solid var(--bronze); outline-offset: 2px; }
+section[id] { display: grid; gap: 16px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 16px; }
+.card { display: grid; gap: 10px; align-content: start; padding: 22px; background: var(--panel); border: 1px solid var(--line); border-top: 2px solid var(--bronze); }
+.card p, .card li { color: var(--muted); font-size: 15px; }
+.card ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+.note { font-size: 13px; color: var(--muted); }
+.principles { counter-reset: p; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 16px; }
+.principles li { counter-increment: p; display: grid; gap: 6px; padding: 18px; border: 1px solid var(--line); background: var(--panel); }
+.principles li::before { content: "0" counter(p); font-family: var(--mono); font-size: 12px; color: var(--bronze); letter-spacing: .1em; }
+.principles p { color: var(--muted); font-size: 15px; }
+.contact { border: 1px solid var(--bronze); background: var(--bronze-soft); padding: 28px; display: grid; gap: 10px; }
+.contact p { color: var(--ink); }
+.section-intro { color: var(--muted); max-width: 70ch; }
+@media (max-width: 720px) { .tabs a { padding: 8px 11px; font-size: 12px; } }
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top"><span class="sigil" aria-hidden="true">GT</span>GTRG</a>
+    <nav class="tabs" aria-label="Sections">
+      <a href="#services">What we do</a>
+      <a href="#divisions">Divisions</a>
+      <a href="#how">How we work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+  <header class="hero">
+    <span class="eyebrow">Gannon Talos Research Group</span>
+    <h1>Ten divisions. One family.</h1>
+    <p>People and AI agents, hired one department at a time. Each division starts with one broad hire, then adds specialists when the work proves it needs them.</p>
+  </header>
+
+  <section class="owner" aria-label="Owner">
+    <div class="sigil" aria-hidden="true">GT</div>
+    <div class="owner-text">
+      <h2>Office of the Owner</h2>
+      <p>Sets the direction, approves every hire, and has the final say on anything outward-facing, paid or permanent.</p>
+    </div>
+  </section>
+
+  <section id="services" aria-labelledby="h-services">
+    <h2 id="h-services">What we do</h2>
+    <p class="section-intro">Practical AI for businesses that build, fix and sell real things. We start with one problem, prove it works, then grow from there.</p>
+    <div class="cards">
+      <article class="card">
+        <h3>AI operations for small business</h3>
+        <p>For the trades, real estate and owner-run companies.</p>
+        <ul><li>Bids, quotes and paperwork drafted faster</li><li>Checklists, templates and follow-up that don't slip</li><li>Your team trained to use it day to day</li></ul>
+      </article>
+      <article class="card">
+        <h3>Government contracting readiness</h3>
+        <p>For subcontractors moving into federal and defense work.</p>
+        <ul><li>CMMC readiness planning and self-assessment prep</li><li>Handling rules for controlled information (CUI)</li><li>Bid and flow-down document support</li></ul>
+        <p class="note">We never take CUI into our own systems; we help you set up yours. We help you prepare; we are not a certified assessor (C3PAO), and this is not legal advice.</p>
+      </article>
+      <article class="card">
+        <h3>Products and media</h3>
+        <p>Our own brands, built with the same system.</p>
+        <ul><li>E-commerce products</li><li>Creator partnerships</li><li>Finished documents: decks, cards, printables</li></ul>
+      </article>
+    </div>
+  </section>
+
+  <section id="divisions" aria-labelledby="h-div">
+    <div class="toolbar">
+      <h2 id="h-div">Divisions</h2>
+      <div class="filters" role="group" aria-label="Filter divisions">
+        <button type="button" data-f="all" aria-pressed="true">All</button>
+        <button type="button" data-f="client" aria-pressed="false">Client work</button>
+        <button type="button" data-f="core" aria-pressed="false">Core</button>
+        <button type="button" data-f="research" aria-pressed="false">Research</button>
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section id="how" aria-labelledby="h-how">
+    <h2 id="h-how">How we work</h2>
+    <p class="section-intro">Five rules every job runs on, for our own team and for yours.</p>
+    <ol class="principles">
+      <li><h3>Updates at milestones</h3><p>You hear from us when something is done, at milestones we agree on up front. No chasing.</p></li>
+      <li><h3>Claims are checked</h3><p>A vendor's "it's compliant" or a tool's "it worked" is a claim until we see the document or the result.</p></li>
+      <li><h3>Done means tested</h3><p>Every deliverable has an acceptance test agreed before work starts. You sign off against it, not against "looks done".</p></li>
+      <li><h3>Written scope</h3><p>We do what was agreed. New ideas become a written change order you approve first. No surprise bills.</p></li>
+      <li><h3>Your data stays yours</h3><p>Client data stays locked to the job that brought it in. We don't reuse it, and we only use tools whose terms let us keep it out of model training.</p></li>
+    </ol>
+  </section>
+
+  <section class="rules" aria-label="How GTRG hires">
+    <h2>How we hire</h2>
+    <ol>
+      <li><h3>One broad hire per division</h3><p>A general counsel before five lawyers. The head hire covers the whole department until the work outgrows it.</p></li>
+      <li><h3>Specialists earn their seat</h3><p>A specialist is hired only after three independent jobs need the same craft, or the head hire's instructions start to conflict with the work.</p></li>
+      <li><h3>The owner approves every hire</h3><p>No new seat, model or agent without the owner's OK.</p></li>
+    </ol>
+  </section>
+
+  <section id="contact" aria-labelledby="h-contact">
+    <div class="contact">
+      <span class="eyebrow">Contact</span>
+      <h2 id="h-contact">Working with us</h2>
+      <p>We take on a small number of jobs at a time, mostly by referral. If someone sent you here, reach out through them and we'll set up a short call.</p>
+    </div>
+  </section>
+
+  <footer><span>Gannon Talos Research Group</span><span>&copy; <span id="yr">2026</span></span></footer>
+</main>
+
+<script>
+const DIVS = [
+  ["OPS","Operations","Runs the board: who is on what, shared records, handoffs and daily goals.","core"],
+  ["SEC","Security","Protects systems, data and agents: prompt-injection defense, access reviews, strict client-data handling.","core"],
+  ["LAW","Legal & Compliance","Reviews our own contracts and data terms before any client data comes in.","core"],
+  ["GOV","Government Contracting","Bid support for prime and sub contractors: CMMC readiness, flow-down rules, CUI handling.","client"],
+  ["INT","Research & Intelligence","Compares tools and approaches with current sources and a decision-ready recommendation.","research"],
+  ["ENG","Engineering & Systems","Builds and repairs the stack: apps, agent runtimes and local tools, with evidence and rollback.","core"],
+  ["KNW","Knowledge & Learning","Memory, notes, retrieval and reusable workflows, so the team remembers and gets sharper.","research"],
+  ["CLT","Client Optimization","AI operations for small businesses, the trades and real estate.","client"],
+  ["COM","Commerce & Products","E-commerce brands and products.","client"],
+  ["MED","Media & Creators","Content, creator partnerships and finished documents: decks, cards and printables.","client"],
+];
+const grid = document.getElementById("grid");
+DIVS.forEach(([code, name, what, group]) => {
+  const el = document.createElement("article");
+  el.className = "div"; el.dataset.g = group;
+  el.innerHTML = `<div class="div-head"><span class="code">${code}</span><h3>${name}</h3></div><p class="what">${what}</p>`;
+  grid.appendChild(el);
+});
+const buttons = document.querySelectorAll(".filters button");
+function apply(f) {
+  buttons.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.f === f)));
+  grid.querySelectorAll(".div").forEach(el => { el.hidden = f !== "all" && el.dataset.g !== f; });
+}
+buttons.forEach(b => b.addEventListener("click", () => apply(b.dataset.f)));
+document.getElementById("yr").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
