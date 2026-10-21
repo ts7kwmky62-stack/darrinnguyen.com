@@ -137,6 +137,25 @@ section[id] { display: grid; gap: 16px; }
 .contact p { color: var(--ink); }
 .section-intro { color: var(--muted); max-width: 70ch; }
 @media (max-width: 720px) { .tabs a { padding: 8px 11px; font-size: 12px; } }
+/* Greyscale "field manual" theme (Dad 10-20): one dark palette in every mode, square corners, mono labels, faint grid. */
+:root, :root[data-theme="dark"], :root[data-theme="light"] {
+  --bg:#0d0e0f; --panel:#151718; --ink:#e8e8e4; --muted:#9a9ea2; --line:#2b2e31;
+  --bronze:#c9ccce; --bronze-soft:#1d2022; color-scheme: dark;
+}
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) { --bg:#0d0e0f; --panel:#151718; --ink:#e8e8e4; --muted:#9a9ea2; --line:#2b2e31; --bronze:#c9ccce; --bronze-soft:#1d2022; color-scheme: dark; } }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#0d0e0f; --panel:#151718; --ink:#e8e8e4; --muted:#9a9ea2; --line:#2b2e31; --bronze:#c9ccce; --bronze-soft:#1d2022; } }
+body { background: var(--bg) linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px) 0 0/100% 32px, var(--bg); }
+.card, .div, .principles li, .contact, .tabs a, .filters button { border-radius: 0 !important; }
+.card { border-top: 2px solid var(--ink); }
+.contact { border-color: var(--line); background: var(--panel); }
+.code { border-color: var(--muted); color: var(--ink); }
+h2 { text-transform: uppercase; letter-spacing: .08em; font-size: 20px; }
+.eyebrow { color: var(--muted); }
+.hero p.slogan { color: var(--ink); }
+.brand svg { display:block; }
+.mark-lg { width: 72px; display:grid; place-items:center; }
+.owner { border-top-color: var(--ink); }
+.tabs a:hover, .filters button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 </style>
 </head>
 <body><main class="wrap"><header class="hero"><span class="eyebrow">404</span><h1>Nothing here.</h1><p><a href="/" style="color:var(--bronze)">Back home</a></p></header></main></body></html>

@@ -160,12 +160,35 @@ section[id] { display: grid; gap: 16px; }
 .section-intro { color: var(--muted); max-width: 70ch; }
 .hero p.slogan { font-family: var(--display); font-size: clamp(18px, 2.4vw, 22px); color: var(--bronze); letter-spacing: .02em; margin-top: -8px; }
 @media (max-width: 720px) { .tabs a { padding: 8px 11px; font-size: 12px; } }
+
+/* Greyscale "field manual" theme (Dad 10-20): one dark palette in every mode, square corners, mono labels, faint grid. */
+:root, :root[data-theme="dark"], :root[data-theme="light"] {
+  --bg:#0d0e0f; --panel:#151718; --ink:#e8e8e4; --muted:#9a9ea2; --line:#2b2e31;
+  --bronze:#c9ccce; --bronze-soft:#1d2022; color-scheme: dark;
+}
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) { --bg:#0d0e0f; --panel:#151718; --ink:#e8e8e4; --muted:#9a9ea2; --line:#2b2e31; --bronze:#c9ccce; --bronze-soft:#1d2022; color-scheme: dark; } }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#0d0e0f; --panel:#151718; --ink:#e8e8e4; --muted:#9a9ea2; --line:#2b2e31; --bronze:#c9ccce; --bronze-soft:#1d2022; } }
+body { background: var(--bg) linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px) 0 0/100% 32px, var(--bg); }
+.card, .div, .principles li, .contact, .tabs a, .filters button { border-radius: 0 !important; }
+.card { border-top: 2px solid var(--ink); }
+.contact { border-color: var(--line); background: var(--panel); }
+.code { border-color: var(--muted); color: var(--ink); }
+h2 { text-transform: uppercase; letter-spacing: .08em; font-size: 20px; }
+.eyebrow { color: var(--muted); }
+.hero p.slogan { color: #c9a774; }
+.eyebrow { color: #8eaecf !important; }
+.card { border-top-color: #c9a774 !important; }
+.owner { border-top-color: #c9a774 !important; }
+.brand svg { display:block; }
+.mark-lg { width: 72px; display:grid; place-items:center; }
+.owner { border-top-color: var(--ink); }
+.tabs a:hover, .filters button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 </style>
 </head>
 <body>
 <header class="nav">
   <div class="nav-in">
-    <a class="brand" href="#top"><span class="sigil" aria-hidden="true">NRG</span>NRG</a>
+    <a class="brand" href="#top"><svg width="44" height="27" viewBox="30 20 240 140" aria-hidden="true"><path d="M40 150 C 90 140, 120 110, 150 70" stroke="#c9a774" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M260 150 C 210 140, 180 110, 150 70" stroke="#8eaecf" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M150 30 Q155 65 192 70 Q155 75 150 110 Q145 75 108 70 Q145 65 150 30Z" fill="#f4efe4"/></svg>NRG</a>
     <nav class="tabs" aria-label="Sections">
       <a href="#services">What we do</a>
       <a href="#divisions">Divisions</a>
@@ -183,11 +206,11 @@ section[id] { display: grid; gap: 16px; }
     <p>People and AI agents, hired one department at a time. Each division starts with one broad hire, then adds specialists when the work proves it needs them.</p>
   </header>
 
-  <section class="owner" aria-label="Owner">
-    <div class="sigil" aria-hidden="true">NRG</div>
+  <section class="owner" aria-label="Co-founder">
+    <div class="mark-lg"><img src="gannon.png" width="72" height="72" alt=""></div>
     <div class="owner-text">
-      <h2>Office of the Owner</h2>
-      <p>Sets the direction, approves every hire, and has the final say on anything outward-facing, paid or permanent.</p>
+      <h2>Gannon · Co-founder</h2>
+      <p>Sets the direction with his partner, approves every hire, and signs off on anything outward-facing, paid or permanent.</p>
     </div>
   </section>
 
