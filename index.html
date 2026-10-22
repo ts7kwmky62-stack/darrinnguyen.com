@@ -452,5 +452,26 @@ header.board .wrap::after{bottom:14px;right:6px;border-left:0;border-top:0}
   document.getElementById('yr').textContent = new Date().getFullYear();
 })();
 </script>
+<!-- GoatCounter (privacy-friendly, no cookies). Paste before </body> once the site code is confirmed. CODE = the GoatCounter site code. -->
+<script data-goatcounter="https://ganon.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<script>
+/* Events: CTA clicks, which quip was shown, scroll depth (25/50/75/100). All counted as events, no personal data. */
+(function(){
+  function ev(name){ try{ window.goatcounter && window.goatcounter.count && window.goatcounter.count({path:name, title:name, event:true}); }catch(e){} }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a'); if(!a) return;
+    var label = (a.textContent||'').trim().slice(0,40) || a.getAttribute('href');
+    ev('click: ' + label);
+  });
+  window.addEventListener('load', function(){
+    var q = document.getElementById('quip'); if(q) setTimeout(function(){ ev('quip: ' + (q.textContent||'').trim().slice(0,40)); }, 1500);
+  });
+  var marks = [25,50,75,100], hit = {};
+  window.addEventListener('scroll', function(){
+    var h = document.documentElement, pct = (h.scrollTop + innerHeight) / h.scrollHeight * 100;
+    marks.forEach(function(m){ if(pct >= m && !hit[m]){ hit[m]=1; ev('scroll ' + m + '%'); } });
+  }, {passive:true});
+})();
+</script>
 </body>
 </html>
