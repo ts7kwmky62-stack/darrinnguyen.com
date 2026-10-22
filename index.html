@@ -257,16 +257,27 @@ footer .egg-wrap{margin-bottom:12px}
 /* ===== blueprint (2026-10-22): one full-bleed drafting grid, matching the NRG schematic wallpapers ===== */
 body{background-color:#0f1216;
   background-image:
-    linear-gradient(rgba(185,188,194,.07) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(185,188,194,.07) 1px,transparent 1px),
-    linear-gradient(rgba(185,188,194,.035) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(185,188,194,.035) 1px,transparent 1px);
+    linear-gradient(rgba(185,188,194,.13) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(185,188,194,.13) 1px,transparent 1px),
+    linear-gradient(rgba(185,188,194,.055) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(185,188,194,.055) 1px,transparent 1px);
   background-size:160px 160px,160px 160px,32px 32px,32px 32px;
   background-position:-1px -1px,-1px -1px,-1px -1px,-1px -1px;
   background-attachment:fixed}
 .board,.board.plain,.sec,footer{background-color:transparent;background-image:none}
 .board.plain,.sec{border-color:rgba(185,188,194,.14)}
 footer{border-top:1px solid rgba(185,188,194,.14)}
+/* drafting ruler under the hero, like the wallpaper's bottom scale: tick every 32px, tall tick every 160px */
+header.board{position:relative}
+header.board::after{content:"";position:absolute;left:0;right:0;bottom:0;height:14px;pointer-events:none;
+  background-image:
+    linear-gradient(90deg,rgba(185,188,194,.45) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(185,188,194,.25) 1px,transparent 1px),
+    linear-gradient(rgba(185,188,194,.30),rgba(185,188,194,.30));
+  background-size:160px 14px,32px 6px,100% 1px;
+  background-position:-1px 0,-1px 8px,0 100%;
+  background-repeat:repeat-x,repeat-x,no-repeat}
+@media (prefers-reduced-transparency:reduce){body{background-image:none}}
 /* crop marks on the hero, like a drawing sheet */
 header.board .wrap{position:relative}
 header.board .wrap::before,header.board .wrap::after{content:"";position:absolute;width:22px;height:22px;border:1.5px solid rgba(185,188,194,.35);pointer-events:none}
