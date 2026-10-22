@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Darrin Nguyen</title>
 <meta name="robots" content="noindex">
-<meta name="description" content="I'm Gannon. I build practical AI systems with a small team of AI agents, and I'm learning more every week.">
-<meta property="og:title" content="NRG · powered by Ganon Talos Research Group">
-<meta property="og:description" content="I'm Gannon. I build practical AI systems with a small team of AI agents, and I'm learning more every week.">
+<meta name="description" content="I build practical AI systems with a small team of AI agents, and I'm learning more every week.">
+<meta property="og:title" content="NRG · powered by Gannon Talos Research Group">
+<meta property="og:description" content="I build practical AI systems with a small team of AI agents, and I'm learning more every week.">
 <meta property="og:image" content="https://darrinnguyen.com/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231d2024'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23d0a34a' stroke-width='4'/%3E%3Ctext x='32' y='44' font-family='Arial Narrow,Arial,sans-serif' font-weight='800' font-size='30' fill='%23d0a34a' text-anchor='middle'%3ENRG%3C/text%3E%3C/svg%3E">
@@ -267,6 +267,23 @@ body{background-color:#0f1216;
 .board,.board.plain,.sec,footer{background-color:transparent;background-image:none}
 .board.plain,.sec{border-color:rgba(185,188,194,.14)}
 footer{border-top:1px solid rgba(185,188,194,.14)}
+
+/* ===== 2026-10-22 16:4x: brand line, wrap fixes, gold agents, scroll reveal ===== */
+.brand .by{color:var(--letter-dim);font-size:.82em;letter-spacing:.18em}
+.top .brand{font-size:15px;letter-spacing:.14em}
+.top .brand b{font-size:1.12em}
+.fig-note,.fig-hint,.offer-line,.trait,.what,p{text-wrap:pretty}
+.fig .t-main.gold{fill:var(--pin)}
+.fig-note,.fig-hint{max-width:none;text-wrap:balance}
+.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease var(--d,0s),transform .7s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
+.js .reveal.in{opacity:1;transform:none}
+.js .fig.reveal .ln-brass path,.js .fig.reveal .ln path{stroke-dasharray:1200;stroke-dashoffset:1200;transition:stroke-dashoffset 1.4s ease .25s}
+.js .fig.reveal.in .ln-brass path,.js .fig.reveal.in .ln path{stroke-dashoffset:0}
+.js .fig.reveal .divs rect,.js .fig.reveal .divs text{opacity:0;transition:opacity .5s ease}
+.js .fig.reveal.in .divs rect,.js .fig.reveal.in .divs text{opacity:1}
+@media (prefers-reduced-motion:reduce){.js .reveal,.js .reveal.in{opacity:1;transform:none;transition:none}
+  .js .fig.reveal .ln-brass path,.js .fig.reveal .ln path{stroke-dasharray:none;stroke-dashoffset:0;transition:none}
+  .js .fig.reveal .divs rect,.js .fig.reveal .divs text{opacity:1;transition:none}}
 /* drafting ruler under the hero, like the wallpaper's bottom scale: tick every 32px, tall tick every 160px */
 header.board{position:relative}
 header.board::after{content:"";position:absolute;left:0;right:0;bottom:0;height:14px;pointer-events:none;
@@ -292,14 +309,14 @@ header.board .wrap::after{bottom:14px;right:6px;border-left:0;border-top:0}
 <header class="board" id="top">
   <div class="wrap">
     <div class="top">
-      <span class="brand"><b>NRG</b> · powered by Ganon Talos Research Group</span>
+      <span class="brand"><b>NRG</b> <span class="by">· powered by</span> Gannon Talos Research Group</span>
       <nav aria-label="Sections"><a href="#directory">Directory</a><a href="#what">What I'm working on</a><a href="#contact">Contact</a></nav>
     </div>
 
     <div class="hero">
       <div>
         <h1><span>Human &amp;</span><span>Artificial</span><span>Intelligence.</span><span><em class="hl">Collided</em>.</span></h1>
-        <p class="offer-line">I'm Gannon. I build practical AI systems with a small team of AI agents, and I'm learning more every week.</p>
+        <p class="offer-line">I build practical AI systems with a small team of AI agents, and I'm learning more every week.</p>
         <a class="cta" href="#directory">See what I'm building</a>
         <p class="lede">The agents do the work. I set the direction and approve every decision.</p>
       </div>
@@ -332,9 +349,9 @@ header.board .wrap::after{bottom:14px;right:6px;border-left:0;border-top:0}
         <g class="dots"><circle cx="640" cy="348" r="4"/><circle cx="640" cy="38" r="4"/><circle cx="640" cy="78" r="4"/><circle cx="640" cy="118" r="4"/><circle cx="640" cy="158" r="4"/><circle cx="640" cy="198" r="4"/><circle cx="640" cy="238" r="4"/><circle cx="640" cy="278" r="4"/><circle cx="640" cy="318" r="4"/><circle cx="640" cy="358" r="4"/><circle cx="640" cy="398" r="4"/></g>
         <rect class="bx-brass" x="10" y="182" width="238" height="76"/>
         <text class="t-brass" x="30" y="215">GANNON</text><text class="t-sub" x="30" y="241">says yes or no</text>
-        <rect class="bx" x="320" y="56" width="240" height="72"/><text class="t-main" x="340" y="88">ATLAS · SECURITY</text><text class="t-sub" x="340" y="112">review, access, client data</text>
-        <rect class="bx" x="320" y="184" width="240" height="72"/><text class="t-main" x="340" y="216">JARVIS · ENGINEERING</text><text class="t-sub" x="340" y="240">systems, code, tooling</text>
-        <rect class="bx" x="320" y="312" width="240" height="72"/><text class="t-main" x="340" y="344">SCOUT · CONDUCTOR</text><text class="t-sub" x="340" y="368">runs the ten divisions</text>
+        <rect class="bx-brass" x="320" y="56" width="240" height="72"/><text class="t-main gold" x="340" y="88">ATLAS · SECURITY</text><text class="t-sub" x="340" y="112">review, access, client data</text>
+        <rect class="bx-brass" x="320" y="184" width="240" height="72"/><text class="t-main gold" x="340" y="216">JARVIS · ENGINEERING</text><text class="t-sub" x="340" y="240">systems, code, tooling</text>
+        <rect class="bx-brass" x="320" y="312" width="240" height="72"/><text class="t-main gold" x="340" y="344">SCOUT · CONDUCTOR</text><text class="t-sub" x="340" y="368">runs the ten divisions</text>
         <g class="divs">
           <rect data-code="OPS" x="690" y="22" width="420" height="32"/><text class="t-code" x="704" y="44">OPS</text><text class="t-div" x="770" y="44">Operations</text>
           <rect data-code="SEC" x="690" y="62" width="420" height="32"/><text class="t-code" x="704" y="84">SEC</text><text class="t-div" x="770" y="84">Security</text>
@@ -430,7 +447,7 @@ header.board .wrap::after{bottom:14px;right:6px;border-left:0;border-top:0}
 
 <footer>
   <div class="wrap egg-wrap"><p class="egg">Information on this site is general in nature and is not legal, financial or professional advice. All engagements are subject to a written agreement.</p></div>
-  <div class="wrap"><span><b>NRG</b> · powered by Ganon Talos Research Group</span><span>© <span id="yr">2026</span></span></div>
+  <div class="wrap"><span><b>NRG</b> <span class="by">· powered by</span> Gannon Talos Research Group</span><span>© <span id="yr">2026</span></span></div>
 </footer>
 
 <script>
@@ -482,6 +499,20 @@ header.board .wrap::after{bottom:14px;right:6px;border-left:0;border-top:0}
     var h = document.documentElement, pct = (h.scrollTop + innerHeight) / h.scrollHeight * 100;
     marks.forEach(function(m){ if(pct >= m && !hit[m]){ hit[m]=1; ev('scroll ' + m + '%'); } });
   }, {passive:true});
+})();
+</script>
+<script>
+/* scroll reveal: content stays visible without JS; with JS it fades/draws in once, as it scrolls into view */
+(function(){
+  var root=document.documentElement; root.classList.add('js');
+  var items=[].slice.call(document.querySelectorAll('.fig, .floor-name, .rows li'));
+  items.forEach(function(el){ el.classList.add('reveal'); });
+  document.querySelectorAll('.rows').forEach(function(ul){ [].slice.call(ul.children).forEach(function(li,i){ li.style.setProperty('--d',(i*0.08)+'s'); }); });
+  if(!('IntersectionObserver' in window)){ items.forEach(function(el){el.classList.add('in')}); return; }
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); },{rootMargin:'0px 0px -8% 0px',threshold:0.08});
+  items.forEach(function(el){ io.observe(el); });
+  /* the divisions in FIG. 1 appear one by one after the lines draw */
+  document.querySelectorAll('.fig .divs rect, .fig .divs text').forEach(function(n){ var y=+n.getAttribute('y')||0; n.style.transitionDelay=(0.9+y/900)+'s'; });
 })();
 </script>
 </body>
