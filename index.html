@@ -2,313 +2,405 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NRG: powered by Gannon Talos Research Group</title>
-<meta name="description" content="NRG: powered by Gannon Talos Research Group. Human &amp; Artificial Intelligence. Collided.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Darrin Nguyen</title>
 <meta name="robots" content="noindex">
+<meta name="description" content="I'm Darrin. I'm lernin AI. A few AI agents built most of this site. I mostly watched.">
+<meta property="og:title" content="NRG · powered by Gannon Talos Research Group">
+<meta property="og:description" content="I'm Darrin. I'm lernin AI. A few AI agents built most of this site. I mostly watched.">
+<meta property="og:image" content="https://darrinnguyen.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231d2024'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23d0a34a' stroke-width='4'/%3E%3Ctext x='32' y='44' font-family='Arial Narrow,Arial,sans-serif' font-weight='800' font-size='30' fill='%23d0a34a' text-anchor='middle'%3ENRG%3C/text%3E%3C/svg%3E">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Public+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<!--
+DESIGN DIRECTION (written before code)
+Audience: owner-run businesses and government subcontractors deciding whether to call NRG.
+Adjectives: built, plainspoken.
+Outside-the-web reference: a building-lobby letter board, the felt directory where every department has a code and a line.
+Type: Big Shoulders Display for the board letters (condensed, signage); Public Sans for reading (the US government's own typeface, a nod to the contracting work).
+Banned: purple, gradient text, glass, cream + serif + terracotta, near-black + neon, three equal cards, emoji, count-ups, "Get started".
+-->
 <style>
-/* Bronze accent. */
-:root {
-  --bg: #eef0ec;
-  --panel: #f8f9f6;
-  --ink: #1b2027;
-  --muted: #5b6370;
-  --line: #d3d7cf;
-  --bronze: #8a5a22;
-  --bronze-soft: #f0e2cc;
-  --ok: #2f6b4a;
-  --ok-soft: #dcebe2;
-  --next: #8a5a22;
-  --next-soft: #f0e2cc;
-  --park: #5b6370;
-  --park-soft: #e2e5e0;
-  --open: #9b3b2e;
-  --open-soft: #f3dcd7;
-  --display: "Chakra Petch", "Arial Narrow", system-ui, sans-serif;
-  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+/* Layout: a dark felt board up top (headline, co-founder, the 10-division directory), then plain ruled reading sections on paper. */
+:root{
+  --paper:#f4f6f8;      /* cool paper, not cream */
+  --ink:#16191f;
+  --muted:#4f5866;      /* 6.9:1 on paper */
+  --rule:#c9cfd7;
+  --board:#1d2024;      /* felt */
+  --groove:#2a2e33;
+  --letter:#f1efe9;     /* plastic letters, 14:1 on felt */
+  --letter-dim:#b9bcc2; /* small letters, 8:1 on felt */
+  --letter-soft:#dad8d2; /* reading text on felt, 12:1 */
+  --pin:#d0a34a;        /* brass push-pin, used only for selection marks */
+  --pin-dim:#7d6532;    /* faint brass for the nameplate's inner line */
+  --plate:#24282d;      /* nameplate face, a step lighter than the felt */
+  --collide:#66c2d2;    /* steel-teal, used ONLY on the word Collided (8:1 on felt) */
+  --display:"Big Shoulders Display","Arial Narrow",Arial,sans-serif;
+  --body:"Public Sans",ui-sans-serif,"Helvetica Neue",Arial,sans-serif;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #12161c; --panel: #1a1f27; --ink: #e7e9ec; --muted: #9aa3ae; --line: #2c333d;
-    --bronze: #d19a55; --bronze-soft: #33281b;
-    --ok: #7cc39a; --ok-soft: #1c2e25; --next: #d19a55; --next-soft: #33281b;
-    --park: #9aa3ae; --park-soft: #252b33; --open: #e58b7c; --open-soft: #3a2421;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #12161c; --panel: #1a1f27; --ink: #e7e9ec; --muted: #9aa3ae; --line: #2c333d;
-  --bronze: #d19a55; --bronze-soft: #33281b;
-  --ok: #7cc39a; --ok-soft: #1c2e25; --next: #d19a55; --next-soft: #33281b;
-  --park: #9aa3ae; --park-soft: #252b33; --open: #e58b7c; --open-soft: #3a2421;
-  color-scheme: dark;
-}
-* { box-sizing: border-box; }
-body {
-  background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55;
-}
-.wrap {
-  max-width: 1120px; margin: 0 auto;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-  padding-block: 40px 64px;
-  display: grid; gap: 40px;
-}
-.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--bronze); }
-h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; letter-spacing: .01em; }
-h1 { font-size: clamp(40px, 7vw, 72px); line-height: 1; font-weight: 700; }
-h2 { font-size: 24px; font-weight: 600; }
-h3 { font-size: 20px; font-weight: 600; line-height: 1.2; }
-p { margin: 0; }
-.hero { display: grid; gap: 16px; max-width: 760px; }
-.hero p { font-size: 18px; color: var(--muted); max-width: 62ch; }
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0f1216;--ink:#e5e8ec;--muted:#a3acb8;--rule:#2c333c;--board:#191c20;--groove:#24282d;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f1216;--ink:#e5e8ec;--muted:#a3acb8;--rule:#2c333c;--board:#191c20;--groove:#24282d;color-scheme:dark}
 
-.owner {
-  display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: center;
-  border-top: 2px solid var(--bronze); border-bottom: 1px solid var(--line); padding-block: 20px;
-}
-.sigil {
-  width: 56px; height: 56px; display: grid; place-items: center;
-  border: 2px solid var(--bronze); color: var(--bronze); font-family: var(--display); font-weight: 700; font-size: 18px;
-  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
-  background: var(--bronze-soft);
-}
-.owner-text { display: grid; gap: 4px; min-width: 0; }
-.owner-text p { color: var(--muted); }
-.crew { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 6px; font-size: 14px; }
-.crew b { font-weight: 600; color: var(--ink); }
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--body)}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit;text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--pin);outline-offset:3px}
+p{margin:0;max-width:65ch}
+h2{font:800 clamp(30px,4.4vw,46px)/1 var(--display);letter-spacing:.02em;text-transform:uppercase;margin:0;text-wrap:balance}
 
-.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
-.stat { display: grid; gap: 2px; padding: 14px 16px; background: var(--panel); border: 1px solid var(--line); }
-.stat .n { font-family: var(--display); font-size: 32px; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1; }
-.stat .l { font-size: 13px; color: var(--muted); }
-.stat.ok .n { color: var(--ok); } .stat.next .n { color: var(--next); } .stat.park .n { color: var(--park); } .stat.open .n { color: var(--open); }
+/* The felt board */
+.board{background-color:var(--board);background-image:repeating-linear-gradient(to bottom,transparent 0 30px,var(--groove) 30px 32px);color:var(--letter)}
+.board .wrap{padding-block:40px 44px}
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;font:600 15px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--letter-dim)}
+.top .brand{color:var(--letter-soft);font-size:16px}
+.top .brand b{color:var(--pin);font-weight:800;letter-spacing:.14em}
+.top nav{display:flex;gap:20px;flex-wrap:wrap}
+.top a{text-decoration:none}.top a:hover{color:var(--letter)}
+.hero{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:40px;align-items:center;margin-top:44px}
+.hero h1{font:800 clamp(46px,8.6vw,108px)/.92 var(--display);text-transform:uppercase;letter-spacing:.02em;margin:0;text-shadow:0 1px 0 rgba(0,0,0,.35)}
+.hero h1 span{display:block}
+.hero h1 .hl{font-style:normal;color:var(--collide)}
+.hero .lede{margin-top:22px;font-size:18px;color:var(--letter-dim);max-width:46ch}
+/* Brass nameplate: same in both themes, because it's an object on the board */
+.plaque{justify-self:end;display:grid;grid-template-columns:96px minmax(0,1fr);gap:18px;align-items:center;background:var(--plate);color:var(--letter);padding:18px 20px;max-width:390px;border:2px solid var(--pin);outline:1px solid var(--pin-dim);outline-offset:-7px}
+.plaque img{width:96px;height:96px;display:block}
+.plaque b{font:800 26px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;display:block;color:var(--letter)}
+.plaque small{display:block;font:600 13px/1.4 var(--display);letter-spacing:.18em;text-transform:uppercase;color:var(--pin);margin:6px 0 8px}
+.plaque p{font-size:14px;line-height:1.5;color:var(--letter-soft)}
 
-.toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
-.filters { display: flex; flex-wrap: wrap; gap: 8px; }
-.filters button {
-  font: 500 13px/1 var(--body); padding: 9px 14px; border: 1px solid var(--line); background: var(--panel); color: var(--ink);
-  cursor: pointer; border-radius: 999px;
-}
-.filters button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-.filters button:focus-visible, .seat:focus-visible { outline: 2px solid var(--bronze); outline-offset: 2px; }
+/* Directory: same felt, no grooves, so nothing runs behind the letters */
+.board.plain{background-image:none;border-top:1px solid var(--groove)}
+.dir .wrap{padding-block:36px 52px}
+.dir-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;border-bottom:2px solid var(--letter);padding-bottom:10px}
+.dir-head h2{color:var(--letter)}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filters button{font:600 15px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--letter-dim);background:transparent;border:2px solid transparent;padding:10px 12px;min-height:44px;cursor:pointer}
+.filters button[aria-pressed="true"]{color:var(--letter);border-color:var(--pin)}
+.filters button:hover{color:var(--letter)}
+/* Directory: three floors side by side, like the panels of a lobby board */
+.floors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px;margin-top:28px;align-items:start}
+.floor-name{font:600 15px/1 var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--pin);margin:0 0 6px;padding-bottom:12px;border-bottom:1px solid var(--groove);display:flex;justify-content:space-between}
+.floor-name span{color:var(--letter-dim)}
+.rows{list-style:none;margin:0;padding:0;display:grid;gap:22px;padding-top:16px}
+.rows li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:baseline}
+.code{font:600 14px/1 var(--display);letter-spacing:.14em;color:var(--letter-dim)}
+.name{display:block;font:800 25px/1.05 var(--display);letter-spacing:.03em;text-transform:uppercase}
+.what{display:block;margin-top:6px;font-size:16px;line-height:1.5;color:var(--letter-soft)}
+.more{display:inline-block;margin-top:8px;font:600 14px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--pin);text-decoration:none;padding-block:6px}
+.more::after{content:" \2193"}
+.more:hover{text-decoration:underline}
+.count{font:600 13px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--letter-dim);margin-top:24px}
 
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 16px; }
-.div {
-  display: grid; gap: 14px; align-content: start; padding: 20px; background: var(--panel); border: 1px solid var(--line); min-width: 0;
-}
-.div-head { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; }
-.code {
-  font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: .08em; color: var(--bronze);
-  border: 1px solid var(--bronze); padding: 3px 6px; margin-top: 2px;
-}
-.div p.what { color: var(--muted); font-size: 15px; }
-.lead { font-size: 13px; color: var(--muted); }
-.lead b { color: var(--ink); font-weight: 600; }
-.seats { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; border-top: 1px solid var(--line); padding-top: 12px; }
-.seat { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: baseline; font-size: 14px; }
-.seat .role { font-family: var(--mono); font-size: 13px; overflow-wrap: anywhere; }
-.seat .role small { display: block; font-family: var(--body); font-size: 12px; color: var(--muted); }
-.chip { font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; white-space: nowrap; }
-.chip.ok { background: var(--ok-soft); color: var(--ok); }
-.chip.next { background: var(--next-soft); color: var(--next); }
-.chip.park { background: var(--park-soft); color: var(--park); }
-.chip.open { background: var(--open-soft); color: var(--open); }
-.empty { font-size: 14px; color: var(--muted); }
+/* Reading sections on paper */
+.sec{padding-block:56px;border-bottom:1px solid var(--rule)}
+.sec>.wrap>p.intro{margin-top:12px;color:var(--muted);font-size:18px}
+.offer{margin-top:28px;display:grid;gap:0}
+.offer>div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:28px;padding:22px 0;border-top:1px solid var(--rule)}
+.offer h3{font:700 21px/1.25 var(--body);margin:0}
+.offer .who{color:var(--muted);margin-top:6px;font-size:15px}
+.offer ul{margin:0;padding-left:20px;display:grid;gap:6px}
+.fine{margin-top:12px;font-size:14px;color:var(--muted)}
+.rules{margin:28px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px}
+.rules li{padding:18px 0;border-top:1px solid var(--rule)}
+.rules b{display:block;font:700 18px/1.3 var(--body)}
+.rules span{display:block;color:var(--muted);margin-top:4px;font-size:16px}
+.rules li.wide{grid-column:1/-1}
+.hire{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:28px}
+.hire>div{border-left:3px solid var(--ink);padding-left:16px}
+.hire b{display:block;font:700 18px/1.3 var(--body)}
+.hire span{display:block;color:var(--muted);margin-top:6px;font-size:16px}
+.hire>div:nth-child(3){border-left-color:var(--pin)}
+.contact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:28px;align-items:start}
+.contact p{font-size:19px}
+footer{padding-block:28px;font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
-.rules { display: grid; gap: 16px; border-top: 1px solid var(--line); padding-top: 32px; }
-.rules ol { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; counter-reset: step; }
-.rules li { counter-increment: step; display: grid; gap: 6px; min-width: 0; }
-.rules li::before { content: "Step " counter(step); font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--bronze); }
-.rules li p { color: var(--muted); font-size: 15px; }
-footer { font-size: 13px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 8px 24px; border-top: 1px solid var(--line); padding-top: 20px; }
-
-@media (max-width: 720px) {
-  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .rules ol { grid-template-columns: 1fr; }
-}
-@media (prefers-reduced-motion: no-preference) {
-  .div { transition: opacity .2s ease; }
+@media (max-width:820px){
+  .hero,.offer>div,.contact{grid-template-columns:minmax(0,1fr)}
+  .plaque{justify-self:start}
+  .floors{grid-template-columns:minmax(0,1fr);gap:40px}
+  .name{font-size:23px}
+  .rules,.hire{grid-template-columns:minmax(0,1fr)}
 }
 
-html { scroll-behavior: smooth; scroll-padding-top: 76px; }
-body { margin: 0; }
-.nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-.nav-in { max-width: 1120px; margin: 0 auto; padding: 12px max(16px, env(safe-area-inset-left, 0px)); display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-.brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-family: var(--display); font-weight: 700; letter-spacing: .04em; }
-.brand .sigil { width: 36px; height: 36px; font-size: 10px; border-width: 1.5px; }
-.tabs { display: flex; flex-wrap: wrap; gap: 6px; }
-.tabs a { font: 500 13px/1 var(--body); padding: 9px 14px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); text-decoration: none; border-radius: 999px; }
-.tabs a:hover, .tabs a[aria-current="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-.tabs a:focus-visible { outline: 2px solid var(--bronze); outline-offset: 2px; }
-section[id] { display: grid; gap: 16px; }
-.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 16px; }
-.card { display: grid; gap: 10px; align-content: start; padding: 22px; background: var(--panel); border: 1px solid var(--line); border-top: 2px solid var(--bronze); }
-.card p, .card li { color: var(--muted); font-size: 15px; }
-.card ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
-.note { font-size: 13px; color: var(--muted); }
-.principles { counter-reset: p; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 16px; }
-.principles li { counter-increment: p; display: grid; gap: 6px; padding: 18px; border: 1px solid var(--line); background: var(--panel); }
-.principles li::before { content: "0" counter(p); font-family: var(--mono); font-size: 12px; color: var(--bronze); letter-spacing: .1em; }
-.principles p { color: var(--muted); font-size: 15px; }
-.contact { border: 1px solid var(--bronze); background: var(--bronze-soft); padding: 28px; display: grid; gap: 10px; }
-.contact p { color: var(--ink); }
-.section-intro { color: var(--muted); max-width: 70ch; }
-.hero p.slogan { font-family: var(--display); font-size: clamp(18px, 2.4vw, 22px); color: var(--bronze); letter-spacing: .02em; margin-top: -8px; }
-@media (max-width: 720px) { .tabs a { padding: 8px 11px; font-size: 12px; } }
+/* Offer line + FIG. 1 (the unit's org chart, drawn like a technical figure) */
+.offer-line{margin-top:20px;font:600 21px/1.4 var(--body);color:var(--letter);max-width:40ch}
+.fig .wrap{padding-block:40px 44px}
+.fig-label{font:600 15px/1 var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--letter-dim);margin:0 0 20px}
+.fig-label span{color:var(--pin);border:1px solid var(--pin);padding:4px 8px;margin-right:10px}
+.fig-scroll{overflow-x:auto}
+.fig svg{display:block;width:100%;min-width:760px;height:auto}
+.fig .ln{stroke:var(--letter-dim);stroke-width:1.5}
+.fig .ln-brass{stroke:var(--pin);stroke-width:2.5}
+.fig .dots circle{fill:var(--letter-dim)}
+.fig .dots-brass circle{fill:var(--pin)}
+.fig .bx,.fig .divs rect{fill:var(--plate);stroke:var(--letter-dim);stroke-width:1.5}
+.fig .bx-brass{fill:var(--plate);stroke:var(--pin);stroke-width:3}
+.fig text{font-family:var(--display);letter-spacing:.06em}
+.fig .t-brass{fill:var(--pin);font-size:24px;font-weight:800}
+.fig .t-main{fill:var(--letter);font-size:20px;font-weight:800}
+.fig .t-sub{fill:var(--letter-dim);font-family:var(--body);font-size:14px;letter-spacing:0}
+.fig .t-code{fill:var(--pin);font-size:16px;font-weight:600;letter-spacing:.14em}
+.fig .t-div{fill:var(--letter-soft);font-family:var(--body);font-size:16px;letter-spacing:0}
+.fig-note{margin-top:16px;color:var(--letter-dim);font-size:15px}
 
-/* Greyscale "field manual" theme (Dad 10-20): one dark palette in every mode, square corners, mono labels, faint grid. */
-:root, :root[data-theme="dark"], :root[data-theme="light"] {
-  --bg:#0d0e0f; --panel:#151718; --ink:#e8e8e4; --muted:#9a9ea2; --line:#2b2e31;
-  --bronze:#c9ccce; --bronze-soft:#1d2022; color-scheme: dark;
+/* ===== One dark world (2026-10-22): every section sits on the felt ===== */
+:root{color-scheme:dark}
+body{background:var(--board);color:var(--letter)}
+.sec{background:var(--board);border-bottom:1px solid var(--groove);padding-block:64px}
+.sec h2{color:var(--letter)}
+.sec>.wrap>p.intro{color:var(--letter-soft)}
+.offer>div{border-top:1px solid var(--groove)}
+.offer h3{font:800 24px/1.1 var(--display);letter-spacing:.04em;text-transform:uppercase;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.offer h3 .tag{font:600 13px/1 var(--display);letter-spacing:.16em;color:var(--pin)}
+.offer .who,.fine{color:var(--letter-dim)}
+.offer ul{color:var(--letter-soft)}
+.rules{counter-reset:roe}
+.rules li{border-top:1px solid var(--groove);display:grid;grid-template-columns:72px minmax(0,1fr);gap:4px 14px}
+.rules li::before{counter-increment:roe;content:"ROE-" counter(roe);grid-row:span 2;font:600 14px/1.6 var(--display);letter-spacing:.14em;color:var(--pin)}
+.rules b{font:800 21px/1.15 var(--display);letter-spacing:.04em;text-transform:uppercase}
+.rules span{color:var(--letter-soft);margin-top:0}
+.hire>div{border-left:3px solid var(--letter-dim)}
+.hire b{font:800 21px/1.15 var(--display);letter-spacing:.04em;text-transform:uppercase}
+.hire span{color:var(--letter-soft)}
+.contact p{color:var(--letter-soft)}
+footer{background:var(--board);color:var(--letter-dim);border-top:1px solid var(--groove);font:600 14px/1 var(--display);letter-spacing:.14em;text-transform:uppercase}
+footer b{color:var(--pin);font-weight:800}
+
+/* ===== 8/10 polish (2026-10-22) ===== */
+/* grooves every 48px; the hero sits on that rhythm */
+.board{background-image:repeating-linear-gradient(to bottom,transparent 0 46px,var(--groove) 46px 48px)}
+.board .wrap{padding-block:48px}
+.hero{margin-top:48px}
+@media (min-width:1100px){.hero h1{font-size:104px;line-height:96px}}
+.cta{display:inline-flex;align-items:center;gap:10px;margin-top:28px;min-height:48px;padding:0 22px;border:2px solid var(--pin);color:var(--letter);text-decoration:none;font:800 18px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;transition:background-color .15s,color .15s}
+.cta::after{content:"\2192";color:var(--pin);transition:transform .15s}
+.cta:hover{background:var(--pin);color:var(--board)}
+.cta:hover::after{color:var(--board);transform:translateX(4px)}
+/* directory rows light up their route in FIG. 1 */
+.rows li{padding:10px 12px;margin:-10px -12px;transition:background-color .15s}
+.rows li:hover{background:var(--plate)}
+.rows li:hover .code{color:var(--pin)}
+.fig .divs rect,.fig .ln path{transition:stroke .15s,stroke-width .15s}
+.fig .lit{stroke:var(--pin)!important;stroke-width:2.5!important}
+.fig-hint{margin-top:6px;color:var(--letter-dim);font-size:14px}
+/* steadier rhythm between sections */
+.sec{padding-block:72px}
+.sec h2{margin-bottom:4px}
+@media (prefers-reduced-motion:reduce){.cta,.cta::after,.rows li,.fig .divs rect,.fig .ln path{transition:none}}
+
+/* ===== 7.9 pass (2026-10-22) ===== */
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+section[id],main section[id]{scroll-margin-top:16px}
+.skip{position:absolute;left:16px;top:-60px;z-index:10;background:var(--pin);color:var(--board);padding:10px 14px;font:800 15px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
+.skip:focus{top:12px}
+/* letters stay on the grooves at every width */
+@media (max-width:1099px){.hero h1{font-size:54px;line-height:48px}}
+/* one orchestrated moment: the four lines drop onto the board, top to bottom */
+@keyframes place{from{transform:translateY(-14px)}to{transform:none}}
+.hero h1 span{animation:place .5s cubic-bezier(.2,.9,.3,1.2) both}
+.hero h1 span:nth-child(2){animation-delay:.08s}.hero h1 span:nth-child(3){animation-delay:.16s}.hero h1 span:nth-child(4){animation-delay:.28s}
+@media (prefers-reduced-motion:reduce){.hero h1 span{animation:none}}
+/* phone: nav wraps cleanly under the brand, plate goes full width */
+@media (max-width:820px){
+  .top{flex-direction:column;align-items:flex-start;gap:12px}
+  .top nav{gap:14px 18px}
+  .plaque{max-width:none;width:100%}
+  .offer-line{font-size:19px}
+  .cta{width:100%;justify-content:center}
+  .filters{width:100%}
+  .fig .wrap{padding-block:36px}
 }
-@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) { --bg:#0d0e0f; --panel:#151718; --ink:#e8e8e4; --muted:#9a9ea2; --line:#2b2e31; --bronze:#c9ccce; --bronze-soft:#1d2022; color-scheme: dark; } }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#0d0e0f; --panel:#151718; --ink:#e8e8e4; --muted:#9a9ea2; --line:#2b2e31; --bronze:#c9ccce; --bronze-soft:#1d2022; } }
-body { background: var(--bg) linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px) 0 0/100% 32px, var(--bg); }
-.card, .div, .principles li, .contact, .tabs a, .filters button { border-radius: 0 !important; }
-.card { border-top: 2px solid var(--ink); }
-.contact { border-color: var(--line); background: var(--panel); }
-.code { border-color: var(--muted); color: var(--ink); }
-h2 { text-transform: uppercase; letter-spacing: .08em; font-size: 20px; }
-.eyebrow { color: var(--muted); }
-.hero p.slogan { color: #c9a774; }
-.eyebrow { color: #8eaecf !important; }
-.card { border-top-color: #c9a774 !important; }
-.owner { border-top-color: #c9a774 !important; }
-.brand svg { display:block; }
-.mark-lg { width: 72px; display:grid; place-items:center; }
-.owner { border-top-color: var(--ink); }
-.tabs a:hover, .filters button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+/* ===== v3 (2026-10-22): declassified briefing ===== */
+.declass{display:inline-block;margin-left:14px;vertical-align:middle;font:800 13px/1 var(--display);font-style:normal;letter-spacing:.2em;text-transform:uppercase;color:var(--pin);border:2px solid var(--pin);padding:6px 10px 5px;transform:rotate(-4deg)}
+.phases{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:2px solid var(--pin)}
+.phases li{padding:18px 20px 4px 0;border-right:1px solid var(--groove);margin-right:20px;position:relative}
+.phases li:last-child{border-right:0;margin-right:0}
+.phases li::before{content:"";position:absolute;top:-8px;left:0;width:14px;height:14px;background:var(--pin)}
+.phases .ph{display:block;font:600 13px/1 var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--pin);margin-top:6px}
+.phases b{display:block;font:800 26px/1.1 var(--display);letter-spacing:.04em;text-transform:uppercase;margin-top:8px}
+.phases .pd{display:block;color:var(--letter-soft);font-size:15px;margin-top:8px}
+.contact-mail{margin-top:16px;font:600 17px/1.4 var(--body);color:var(--letter)}
+.brief{margin:16px 0 0;padding:16px;border:1px dashed var(--letter-dim);background:var(--plate);color:var(--letter-soft);font:400 14px/1.6 ui-monospace,"SF Mono",Menlo,monospace;white-space:pre-wrap;overflow-wrap:anywhere}
+.contact .cta{margin-top:16px}
+@media (max-width:820px){.phases{grid-template-columns:minmax(0,1fr)}.phases li{border-right:0;margin-right:0;border-bottom:1px solid var(--groove);padding-bottom:16px}.declass{margin-left:0;margin-top:8px}}
+
+/* ===== personal fun version (2026-10-22) ===== */
+.ops-list{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:14px}
+.ops-list li{display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;align-items:baseline;font-size:19px;color:var(--letter-soft);padding-bottom:14px;border-bottom:1px solid var(--groove)}
+.ops-list .tag{font:600 14px/1 var(--display);letter-spacing:.16em;color:var(--pin)}
 </style>
 </head>
 <body>
-<header class="nav">
-  <div class="nav-in">
-    <a class="brand" href="#top"><svg width="44" height="27" viewBox="30 20 240 140" aria-hidden="true"><path d="M40 150 C 90 140, 120 110, 150 70" stroke="#c9a774" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M260 150 C 210 140, 180 110, 150 70" stroke="#8eaecf" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M150 30 Q155 65 192 70 Q155 75 150 110 Q145 75 108 70 Q145 65 150 30Z" fill="#f4efe4"/></svg>NRG</a>
-    <nav class="tabs" aria-label="Sections">
-      <a href="#services">What we do</a>
-      <a href="#divisions">Divisions</a>
-      <a href="#how">How we work</a>
-      <a href="#contact">Contact</a>
-    </nav>
+<a class="skip" href="#directory">Skip to the directory</a>
+<header class="board" id="top">
+  <div class="wrap">
+    <div class="top">
+      <span class="brand"><b>NRG</b> · powered by Gannon Talos Research Group</span>
+      <nav aria-label="Sections"><a href="#directory">Directory</a><a href="#what">What I'm working on</a><a href="#contact">Say hi</a></nav>
+    </div>
+
+    <div class="hero">
+      <div>
+        <h1><span>Human &amp;</span><span>Artificial</span><span>Intelligence.</span><span><em class="hl">Collided</em>.</span></h1>
+        <p class="offer-line">I'm Darrin. I'm lernin AI. A few AI agents built most of this site. I mostly watched.</p>
+        <a class="cta" href="#directory">See what I'm building</a>
+        <p class="lede">The AI does most of the work. I mostly say yes or no.</p>
+      </div>
+      <div class="plaque">
+        <img src="gannon.png" alt="Darrin: black and white portrait in a hexagon frame" width="96" height="96">
+        <div>
+          <b>Darrin</b>
+                  </div>
+      </div>
+    </div>
+
   </div>
 </header>
 
-<main class="wrap" id="top">
-  <header class="hero">
-    <span class="eyebrow">NRG: powered by Gannon Talos Research Group</span>
-    <p class="slogan">Human &amp; Artificial Intelligence. Collided.</p>
-    <h1>Ten divisions. One family.</h1>
-    <p>People and AI agents, hired one department at a time. Each division starts with one broad hire, then adds specialists when the work proves it needs them.</p>
-  </header>
-
-  <section class="owner" aria-label="Co-founder">
-    <div class="mark-lg"><img src="gannon.png" width="72" height="72" alt=""></div>
-    <div class="owner-text">
-      <h2>Gannon · Co-founder</h2>
-      <p>Sets the direction with his partner, approves every hire, and signs off on anything outward-facing, paid or permanent.</p>
+<section class="board plain fig" aria-labelledby="fig-h">
+  <div class="wrap">
+    <p class="fig-label" id="fig-h"><span>FIG. 1</span> How the unit is organized <em class="declass">Declassified</em></p>
+    <div class="fig-scroll">
+      <svg viewBox="0 0 1120 440" role="img" aria-label="Command directs three AI leads, callsigns Atlas, Jarvis and Scout; Scout runs ten divisions">
+        <g class="ln-brass" fill="none">
+          <path d="M248 220H262"/><path d="M262 92V348"/><path d="M262 92H320"/><path d="M262 220H320"/><path d="M262 348H320"/>
+        </g>
+        <g class="ln" fill="none">
+          <path d="M560 348H640"/><path d="M640 38V402"/>
+          <path data-code="OPS" d="M640 38H690"/><path data-code="SEC" d="M640 78H690"/><path data-code="LAW" d="M640 118H690"/><path data-code="ENG" d="M640 158H690"/><path data-code="GOV" d="M640 198H690"/>
+          <path data-code="CLT" d="M640 238H690"/><path data-code="COM" d="M640 278H690"/><path data-code="MED" d="M640 318H690"/><path data-code="INT" d="M640 358H690"/><path data-code="KNW" d="M640 398H690"/>
+        </g>
+        <g class="dots-brass"><circle cx="262" cy="92" r="5"/><circle cx="262" cy="220" r="5"/><circle cx="262" cy="348" r="5"/></g>
+        <g class="dots"><circle cx="640" cy="348" r="4"/><circle cx="640" cy="38" r="4"/><circle cx="640" cy="78" r="4"/><circle cx="640" cy="118" r="4"/><circle cx="640" cy="158" r="4"/><circle cx="640" cy="198" r="4"/><circle cx="640" cy="238" r="4"/><circle cx="640" cy="278" r="4"/><circle cx="640" cy="318" r="4"/><circle cx="640" cy="358" r="4"/><circle cx="640" cy="398" r="4"/></g>
+        <rect class="bx-brass" x="10" y="182" width="238" height="76"/>
+        <text class="t-brass" x="30" y="215">DARRIN</text><text class="t-sub" x="30" y="241">says yes or no</text>
+        <rect class="bx" x="320" y="56" width="240" height="72"/><text class="t-main" x="340" y="88">ATLAS · SECURITY</text><text class="t-sub" x="340" y="112">review, access, client data</text>
+        <rect class="bx" x="320" y="184" width="240" height="72"/><text class="t-main" x="340" y="216">JARVIS · ENGINEERING</text><text class="t-sub" x="340" y="240">systems, code, tooling</text>
+        <rect class="bx" x="320" y="312" width="240" height="72"/><text class="t-main" x="340" y="344">SCOUT · CONDUCTOR</text><text class="t-sub" x="340" y="368">runs the ten divisions</text>
+        <g class="divs">
+          <rect data-code="OPS" x="690" y="22" width="420" height="32"/><text class="t-code" x="704" y="44">OPS</text><text class="t-div" x="770" y="44">Operations</text>
+          <rect data-code="SEC" x="690" y="62" width="420" height="32"/><text class="t-code" x="704" y="84">SEC</text><text class="t-div" x="770" y="84">Security</text>
+          <rect data-code="LAW" x="690" y="102" width="420" height="32"/><text class="t-code" x="704" y="124">LAW</text><text class="t-div" x="770" y="124">Legal &amp; Compliance</text>
+          <rect data-code="ENG" x="690" y="142" width="420" height="32"/><text class="t-code" x="704" y="164">ENG</text><text class="t-div" x="770" y="164">Engineering &amp; Systems</text>
+          <rect data-code="GOV" x="690" y="182" width="420" height="32"/><text class="t-code" x="704" y="204">GOV</text><text class="t-div" x="770" y="204">Government Contracting</text>
+          <rect data-code="CLT" x="690" y="222" width="420" height="32"/><text class="t-code" x="704" y="244">CLT</text><text class="t-div" x="770" y="244">Client Optimization</text>
+          <rect data-code="COM" x="690" y="262" width="420" height="32"/><text class="t-code" x="704" y="284">COM</text><text class="t-div" x="770" y="284">Commerce &amp; Products</text>
+          <rect data-code="MED" x="690" y="302" width="420" height="32"/><text class="t-code" x="704" y="324">MED</text><text class="t-div" x="770" y="324">Media &amp; Creators</text>
+          <rect data-code="INT" x="690" y="342" width="420" height="32"/><text class="t-code" x="704" y="364">INT</text><text class="t-div" x="770" y="364">Research &amp; Intelligence</text>
+          <rect data-code="KNW" x="690" y="382" width="420" height="32"/><text class="t-code" x="704" y="404">KNW</text><text class="t-div" x="770" y="404">Knowledge &amp; Learning</text>
+        </g>
+      </svg>
     </div>
-  </section>
+    <p class="fig-note">How it is set up: me, three AI agents (Atlas, Jarvis and Scout), and ten areas they work on.</p>
+    <p class="fig-hint">Point at any division below to trace its route.</p>
+  </div>
+</section>
 
-  <section id="services" aria-labelledby="h-services">
-    <h2 id="h-services">What we do</h2>
-    <p class="section-intro">Practical AI for businesses that build, fix and sell real things. We start with one problem, prove it works, then grow from there.</p>
-    <div class="cards">
-      <article class="card">
-        <h3>AI operations for small business</h3>
-        <p>For the trades, real estate and owner-run companies.</p>
-        <ul><li>Bids, quotes and paperwork drafted faster</li><li>Checklists, templates and follow-up that don't slip</li><li>Your team trained to use it day to day</li></ul>
-      </article>
-      <article class="card">
-        <h3>Government contracting readiness</h3>
-        <p>For subcontractors moving into federal and defense work.</p>
-        <ul><li>CMMC readiness planning and self-assessment prep</li><li>Handling rules for controlled information (CUI)</li><li>Bid and flow-down document support</li></ul>
-        <p class="note">We never take CUI into our own systems; we help you set up yours. We help you prepare; we are not a certified assessor (C3PAO), and this is not legal advice.</p>
-      </article>
-      <article class="card">
-        <h3>Products and media</h3>
-        <p>Our own brands, built with the same system.</p>
-        <ul><li>E-commerce products</li><li>Creator partnerships</li><li>Finished documents: decks, cards, printables</li></ul>
-      </article>
-    </div>
-  </section>
-
-  <section id="divisions" aria-labelledby="h-div">
-    <div class="toolbar">
-      <h2 id="h-div">Divisions</h2>
-      <div class="filters" role="group" aria-label="Filter divisions">
-        <button type="button" data-f="all" aria-pressed="true">All</button>
-        <button type="button" data-f="client" aria-pressed="false">Client work</button>
-        <button type="button" data-f="core" aria-pressed="false">Core</button>
-        <button type="button" data-f="research" aria-pressed="false">Research</button>
+<section class="board plain dir" id="directory" aria-labelledby="dir-h">
+  <div class="wrap">
+      <div class="dir-head">
+        <h2 id="dir-h">Ten divisions, one unit</h2>
+        <div class="filters" role="group" aria-label="Filter divisions">
+          <button type="button" data-f="all" aria-pressed="true">All</button>
+          <button type="button" data-f="client" aria-pressed="false">Client work</button>
+          <button type="button" data-f="core" aria-pressed="false">Core</button>
+          <button type="button" data-f="research" aria-pressed="false">Research</button>
+        </div>
       </div>
+      <div class="floors" id="floors">
+        <section class="floor" data-g="client" aria-labelledby="fl-client">
+          <h3 class="floor-name" id="fl-client">Client work <span>4</span></h3>
+          <ul class="rows">
+            <li data-code="GOV"><span class="code">GOV</span><div><span class="name">Government Contracting</span><span class="what">Bid support for prime and sub contractors: CMMC readiness, flow-down rules, CUI handling.</span><a class="more" href="#svc-gov">What we offer</a></div></li>
+            <li data-code="CLT"><span class="code">CLT</span><div><span class="name">Client Optimization</span><span class="what">AI operations for small businesses, the trades and real estate.</span><a class="more" href="#svc-ops">What we offer</a></div></li>
+            <li data-code="COM"><span class="code">COM</span><div><span class="name">Commerce &amp; Products</span><span class="what">E-commerce brands and products.</span><a class="more" href="#svc-products">What we offer</a></div></li>
+            <li data-code="MED"><span class="code">MED</span><div><span class="name">Media &amp; Creators</span><span class="what">Content, creator partnerships and finished documents: decks, cards and printables.</span><a class="more" href="#svc-products">What we offer</a></div></li>
+          </ul>
+        </section>
+        <section class="floor" data-g="core" aria-labelledby="fl-core">
+          <h3 class="floor-name" id="fl-core">Core <span>4</span></h3>
+          <ul class="rows">
+            <li data-code="OPS"><span class="code">OPS</span><div><span class="name">Operations</span><span class="what">Runs the board: who is on what, shared records, handoffs and daily goals.</span></div></li>
+            <li data-code="SEC"><span class="code">SEC</span><div><span class="name">Security</span><span class="what">Protects systems, data and agents: prompt-injection defense, access reviews, strict client-data handling.</span></div></li>
+            <li data-code="LAW"><span class="code">LAW</span><div><span class="name">Legal &amp; Compliance</span><span class="what">Reviews our own contracts and data terms before any client data comes in.</span></div></li>
+            <li data-code="ENG"><span class="code">ENG</span><div><span class="name">Engineering &amp; Systems</span><span class="what">Builds and repairs the stack: apps, agent runtimes and local tools, with evidence and rollback.</span></div></li>
+          </ul>
+        </section>
+        <section class="floor" data-g="research" aria-labelledby="fl-research">
+          <h3 class="floor-name" id="fl-research">Research <span>2</span></h3>
+          <ul class="rows">
+            <li data-code="INT"><span class="code">INT</span><div><span class="name">Research &amp; Intelligence</span><span class="what">Compares tools and approaches with current sources and a decision-ready recommendation.</span></div></li>
+            <li data-code="KNW"><span class="code">KNW</span><div><span class="name">Knowledge &amp; Learning</span><span class="what">Memory, notes, retrieval and reusable workflows, so the team remembers and gets sharper.</span></div></li>
+          </ul>
+        </section>
+      </div>
+      <p class="count" id="count" aria-live="polite">Showing all 10 divisions</p>
+  </div>
+</section>
+
+<main>
+  <section class="sec" id="what" aria-labelledby="what-h">
+    <div class="wrap">
+      <h2 id="what-h">What I'm working on</h2>
+      <ul class="ops-list">
+        <li><span class="tag">CLT</span>AI that runs the paperwork for small businesses and the trades</li>
+        <li><span class="tag">GOV</span>Getting subcontractors ready for federal and defense work</li>
+        <li><span class="tag">COM · MED</span>Own brands, products and media, built by the same crew</li>
+      </ul>
+      <p class="fine">Not a certified assessor, and not legal advice.</p>
     </div>
-    <div class="grid" id="grid"></div>
   </section>
 
-  <section id="how" aria-labelledby="h-how">
-    <h2 id="h-how">How we work</h2>
-    <p class="section-intro">Five rules every job runs on, for our own team and for yours.</p>
-    <ol class="principles">
-      <li><h3>Updates at milestones</h3><p>You hear from us when something is done, at milestones we agree on up front. No chasing.</p></li>
-      <li><h3>Claims are checked</h3><p>A vendor's "it's compliant" or a tool's "it worked" is a claim until we see the document or the result.</p></li>
-      <li><h3>Done means tested</h3><p>Every deliverable has an acceptance test agreed before work starts. You sign off against it, not against "looks done".</p></li>
-      <li><h3>Written scope</h3><p>We do what was agreed. New ideas become a written change order you approve first. No surprise bills.</p></li>
-      <li><h3>Your data stays yours</h3><p>Client data stays locked to the job that brought it in. We don't reuse it, and we only use tools whose terms let us keep it out of model training.</p></li>
-    </ol>
-  </section>
-
-  <section class="rules" aria-label="How we hire">
-    <h2>How we hire</h2>
-    <ol>
-      <li><h3>One broad hire per division</h3><p>A general counsel before five lawyers. The head hire covers the whole department until the work outgrows it.</p></li>
-      <li><h3>Specialists earn their seat</h3><p>A specialist is hired only after three independent jobs need the same craft, or the head hire's instructions start to conflict with the work.</p></li>
-      <li><h3>The owner approves every hire</h3><p>No new seat, model or agent without the owner's OK.</p></li>
-    </ol>
-  </section>
-
-  <section id="contact" aria-labelledby="h-contact">
-    <div class="contact">
-      <span class="eyebrow">Contact</span>
-      <h2 id="h-contact">Working with us</h2>
-      <p>We take on a small number of jobs at a time, mostly by referral. If someone sent you here, reach out through them and we'll set up a short call.</p>
+  <section class="sec" id="contact" aria-labelledby="contact-h">
+    <div class="wrap contact">
+      <h2 id="contact-h">Say hi</h2>
+      <div><p>If you want to know what I'm working on, message me on Instagram.</p></div>
     </div>
   </section>
-
-  <footer><span>NRG: powered by Gannon Talos Research Group</span><span>&copy; <span id="yr">2026</span></span></footer>
 </main>
 
+<footer>
+  <div class="wrap"><span><b>NRG</b> · powered by Gannon Talos Research Group</span><span>© <span id="yr">2026</span></span></div>
+</footer>
+
 <script>
-const DIVS = [
-  ["OPS","Operations","Runs the board: who is on what, shared records, handoffs and daily goals.","core"],
-  ["SEC","Security","Protects systems, data and agents: prompt-injection defense, access reviews, strict client-data handling.","core"],
-  ["LAW","Legal & Compliance","Reviews our own contracts and data terms before any client data comes in.","core"],
-  ["GOV","Government Contracting","Bid support for prime and sub contractors: CMMC readiness, flow-down rules, CUI handling.","client"],
-  ["INT","Research & Intelligence","Compares tools and approaches with current sources and a decision-ready recommendation.","research"],
-  ["ENG","Engineering & Systems","Builds and repairs the stack: apps, agent runtimes and local tools, with evidence and rollback.","core"],
-  ["KNW","Knowledge & Learning","Memory, notes, retrieval and reusable workflows, so the team remembers and gets sharper.","research"],
-  ["CLT","Client Optimization","AI operations for small businesses, the trades and real estate.","client"],
-  ["COM","Commerce & Products","E-commerce brands and products.","client"],
-  ["MED","Media & Creators","Content, creator partnerships and finished documents: decks, cards and printables.","client"],
-];
-const grid = document.getElementById("grid");
-DIVS.forEach(([code, name, what, group]) => {
-  const el = document.createElement("article");
-  el.className = "div"; el.dataset.g = group;
-  el.innerHTML = `<div class="div-head"><span class="code">${code}</span><h3>${name}</h3></div><p class="what">${what}</p>`;
-  grid.appendChild(el);
-});
-const buttons = document.querySelectorAll(".filters button");
-function apply(f) {
-  buttons.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.f === f)));
-  grid.querySelectorAll(".div").forEach(el => { el.hidden = f !== "all" && el.dataset.g !== f; });
-}
-buttons.forEach(b => b.addEventListener("click", () => apply(b.dataset.f)));
-document.getElementById("yr").textContent = new Date().getFullYear();
+(function () {
+  var buttons = document.querySelectorAll('.filters button');
+  var floors = document.querySelectorAll('#floors .floor');
+  var count = document.getElementById('count');
+  var labels = { all: 'all 10 divisions', client: 'client work', core: 'core divisions', research: 'research' };
+  function apply(f) {
+    var n = 0;
+    buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.f === f)); });
+    floors.forEach(function (fl) { var show = f === 'all' || fl.dataset.g === f; fl.hidden = !show; if (show) n += fl.querySelectorAll('li').length; });
+    count.textContent = f === 'all' ? 'Showing all 10 divisions' : 'Showing ' + n + ' of 10: ' + labels[f];
+  }
+  buttons.forEach(function (b) { b.addEventListener('click', function () { apply(b.dataset.f); }); });
+
+  // hovering a division in the directory traces its route in FIG. 1
+  document.querySelectorAll('.rows li[data-code]').forEach(function (li) {
+    var parts = document.querySelectorAll('.fig [data-code="' + li.dataset.code + '"]');
+    li.addEventListener('mouseenter', function () { parts.forEach(function (p) { p.classList.add('lit'); }); });
+    li.addEventListener('mouseleave', function () { parts.forEach(function (p) { p.classList.remove('lit'); }); });
+  });
+
+  var cb = document.getElementById('copybrief');
+  if (cb) cb.addEventListener('click', function () {
+    var pre = document.getElementById('brief'), out = document.getElementById('copied');
+    function sel() { var r = document.createRange(); r.selectNodeContents(pre); var s = getSelection(); s.removeAllRanges(); s.addRange(r); out.textContent = 'Selected. Press Cmd+C to copy.'; }
+    try { navigator.clipboard.writeText(pre.textContent).then(function () { out.textContent = 'Copied. Paste it into your email.'; }, sel); } catch (e) { sel(); }
+  });
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
 </script>
 </body>
 </html>
