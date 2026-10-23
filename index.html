@@ -318,11 +318,7 @@ footer .serial{margin-top:0}
 /* ===== neural (2026-10-23) ===== */
 /* synapse mark before NRG: Gannon in the middle, three agents around; negative margins keep the line height as it was */
 .syn{display:inline-block;width:15px;height:15px;margin:-4px 6px -4px 0;vertical-align:2px;overflow:visible}
-/* 2e note: dotted underline; the note opens on hover, keyboard focus or tap, under the name inside the title block (absolute: no shift, no overflow) */
 .plaque-row>div{position:relative}
-.namecls abbr{text-decoration:underline dotted;text-decoration-color:var(--letter-dim);text-decoration-thickness:1px;text-underline-offset:4px;cursor:help}
-.namecls abbr::after{content:attr(data-tip);position:absolute;left:0;top:26px;z-index:5;width:max-content;max-width:100%;padding:8px 10px;background:var(--plate);border:1px solid var(--pin);color:var(--letter-soft);font:400 13px/1.45 var(--body);letter-spacing:0;text-transform:none;white-space:normal;pointer-events:none;opacity:0;visibility:hidden}
-.namecls abbr:hover::after,.namecls abbr:focus::after{opacity:1;visibility:visible}
 /* FIG. 1 neural pulse: a decoration layer drawn by script on top of the lines; the figure is complete without it */
 .fig .pulse{pointer-events:none}
 .fig .pulse circle{fill:var(--pin)}
@@ -352,7 +348,7 @@ footer .serial{margin-top:0}
     <div class="plaque plaque-row">
       <img src="gannon.png" alt="Gannon: portrait in a hexagon frame" width="64" height="64">
       <div>
-        <b class="namecls">Gannon · Class: <abbr tabindex="0" aria-label="2e: twice-exceptional, gifted and neurodivergent, at the same time" data-tip="Twice-exceptional: gifted and neurodivergent, at the same time.">2e</abbr></b>
+        <b class="namecls">Gannon · Class: 2E Neurodivergent</b>
         <p class="trait">Thinks in patterns. Learns by failing. Never stops attempting to optimize.</p>
         <span class="serial" title="m/s">No. 299 792 458</span>
       </div>
@@ -661,10 +657,6 @@ footer .serial{margin-top:0}
   var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ io.disconnect(); setTimeout(glide,2000); } }); },{threshold:0.6});
   io.observe(s);
 })();
-</script>
-<script>
-/* 2e note: a tap focuses the abbreviation so its note opens on phones too */
-(function(){ var a=document.querySelector('.namecls abbr'); if(a) a.addEventListener('click',function(){ a.focus(); }); })();
 </script>
 <script>
 /* FIG. 1 neural pulse: once, after the lines draw, a gold signal runs from GANNON to the three agents, then from Scout out to the ten divisions;
