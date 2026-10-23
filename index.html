@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Darrin Nguyen</title>
 <meta name="robots" content="noindex">
-<meta name="description" content="I build practical AI systems with a small team of AI agents, and I'm learning more every week.">
+<meta name="description" content="One person. Three AI agents. A company built in public.">
 <meta property="og:title" content="NRG · powered by Gannon Talos Research Group">
-<meta property="og:description" content="I build practical AI systems with a small team of AI agents, and I'm learning more every week.">
+<meta property="og:description" content="One person. Three AI agents. A company built in public.">
 <meta property="og:image" content="https://darrinnguyen.com/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231d2024'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23d0a34a' stroke-width='4'/%3E%3Ctext x='32' y='44' font-family='Arial Narrow,Arial,sans-serif' font-weight='800' font-size='30' fill='%23d0a34a' text-anchor='middle'%3ENRG%3C/text%3E%3C/svg%3E">
@@ -250,6 +250,7 @@ footer .egg-wrap{margin-bottom:12px}
 .contact div p+p{margin-top:18px}
 .contact .quip{font-size:16px;line-height:1.5;color:var(--letter-dim)}
 .contact div p.quip:first-of-type,.contact div p+.quip{margin-top:28px}
+.contact .lead-ref{font:700 clamp(24px,3.2vw,34px)/1.15 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--letter)}
 .contact div .quip+.quip{margin-top:14px}
 @media (pointer:coarse){.top nav a,a.more{display:inline-flex;align-items:center;min-height:44px}}
 @media (max-width:600px){.ops-list li{grid-template-columns:minmax(0,1fr);gap:6px;font-size:17px}}
@@ -269,9 +270,9 @@ body{background-color:#0f1216;
 footer{border-top:1px solid rgba(185,188,194,.14)}
 
 /* ===== 2026-10-22 16:4x: brand line, wrap fixes, gold agents, scroll reveal ===== */
-.brand .by{color:var(--letter-dim);font-size:.82em;letter-spacing:.18em}
+.brand .by{color:var(--letter-dim);font-size:1em;letter-spacing:inherit;font-weight:inherit}
 .top .brand{font-size:15px;letter-spacing:.14em}
-.top .brand b{font-size:1.12em}
+.top .brand b{font-size:1em}
 .fig-note,.fig-hint,.offer-line,.trait,.what,p{text-wrap:pretty}
 .fig .t-main.gold{fill:var(--pin)}
 .fig-note,.fig-hint{max-width:none;text-wrap:balance}
@@ -284,6 +285,13 @@ footer{border-top:1px solid rgba(185,188,194,.14)}
 @media (prefers-reduced-motion:reduce){.js .reveal,.js .reveal.in{opacity:1;transform:none;transition:none}
   .js .fig.reveal .ln-brass path,.js .fig.reveal .ln path{stroke-dasharray:none;stroke-dashoffset:0;transition:none}
   .js .fig.reveal .divs rect,.js .fig.reveal .divs text{opacity:1;transition:none}}
+
+/* "What we're working on": each line writes in left to right as it scrolls into view */
+.js .ops-list li .txt{display:inline-block;clip-path:inset(0 100% 0 0);transition:clip-path 1.1s cubic-bezier(.5,0,.2,1) var(--d,0s)}
+.js .ops-list li.in .txt{clip-path:inset(0 0 0 0)}
+.js .ops-list li .tag{opacity:0;transition:opacity .4s ease var(--d,0s)}
+.js .ops-list li.in .tag{opacity:1}
+@media (prefers-reduced-motion:reduce){.js .ops-list li .txt{clip-path:none;transition:none}.js .ops-list li .tag{opacity:1;transition:none}}
 /* drafting ruler under the hero, like the wallpaper's bottom scale: tick every 32px, tall tick every 160px */
 header.board{position:relative}
 header.board::after{content:"";position:absolute;left:0;right:0;bottom:0;height:14px;pointer-events:none;
@@ -310,15 +318,15 @@ header.board .wrap::after{bottom:14px;right:6px;border-left:0;border-top:0}
   <div class="wrap">
     <div class="top">
       <span class="brand"><b>NRG</b> <span class="by">· powered by</span> Gannon Talos Research Group</span>
-      <nav aria-label="Sections"><a href="#directory">Directory</a><a href="#what">What I'm working on</a><a href="#contact">Contact</a></nav>
+      <nav aria-label="Sections"><a href="#directory">Directory</a><a href="#what">Focus</a><a href="#contact">Contact</a></nav>
     </div>
 
     <div class="hero">
       <div>
         <h1><span>Human &amp;</span><span>Artificial</span><span>Intelligence.</span><span><em class="hl">Collided</em>.</span></h1>
-        <p class="offer-line">I build practical AI systems with a small team of AI agents, and I'm learning more every week.</p>
+        <p class="offer-line">One person. Three AI agents. A company built in public.</p>
         <a class="cta" href="#directory">See what I'm building</a>
-        <p class="lede">The agents do the work. I set the direction and approve every decision.</p>
+        <p class="lede">They draft, check and challenge each other's work. Nothing ships until I sign off.</p>
       </div>
     </div>
     <div class="plaque plaque-row">
@@ -366,8 +374,6 @@ header.board .wrap::after{bottom:14px;right:6px;border-left:0;border-top:0}
         </g>
       </svg>
     </div>
-    <p class="fig-note">How it is set up: me, three AI agents (Atlas, Jarvis and Scout), and ten areas they work on.</p>
-    <p class="fig-hint">Point at any division below to trace its route.</p>
   </div>
 </section>
 
@@ -386,10 +392,10 @@ header.board .wrap::after{bottom:14px;right:6px;border-left:0;border-top:0}
         <section class="floor" data-g="client" aria-labelledby="fl-client">
           <h3 class="floor-name" id="fl-client">Client work <span>4</span></h3>
           <ul class="rows">
-            <li data-code="GOV"><span class="code">GOV</span><div><span class="name">Government Contracting</span><span class="what">Bid support for prime and sub contractors: CMMC readiness, flow-down rules, CUI handling.</span><a class="more" href="#what">What I&rsquo;m working on</a></div></li>
-            <li data-code="CLT"><span class="code">CLT</span><div><span class="name">Client Optimization</span><span class="what">AI operations for small businesses, the trades and real estate.</span><a class="more" href="#what">What I&rsquo;m working on</a></div></li>
-            <li data-code="COM"><span class="code">COM</span><div><span class="name">Commerce &amp; Products</span><span class="what">E-commerce brands and products.</span><a class="more" href="#what">What I&rsquo;m working on</a></div></li>
-            <li data-code="MED"><span class="code">MED</span><div><span class="name">Media &amp; Creators</span><span class="what">Content, creator partnerships and finished documents: decks, cards and printables.</span><a class="more" href="#what">What I&rsquo;m working on</a></div></li>
+            <li data-code="GOV"><span class="code">GOV</span><div><span class="name">Government Contracting</span><span class="what">Bid support for prime and sub contractors: CMMC readiness, flow-down rules, CUI handling.</span><a class="more" href="#what">Areas of focus</a></div></li>
+            <li data-code="CLT"><span class="code">CLT</span><div><span class="name">Client Optimization</span><span class="what">AI operations for small businesses, the trades and real estate.</span><a class="more" href="#what">Areas of focus</a></div></li>
+            <li data-code="COM"><span class="code">COM</span><div><span class="name">Commerce &amp; Products</span><span class="what">E-commerce brands and products.</span><a class="more" href="#what">Areas of focus</a></div></li>
+            <li data-code="MED"><span class="code">MED</span><div><span class="name">Media &amp; Creators</span><span class="what">Content, creator partnerships and finished documents: decks, cards and printables.</span><a class="more" href="#what">Areas of focus</a></div></li>
           </ul>
         </section>
         <section class="floor" data-g="core" aria-labelledby="fl-core">
@@ -416,11 +422,11 @@ header.board .wrap::after{bottom:14px;right:6px;border-left:0;border-top:0}
 <main>
   <section class="sec" id="what" aria-labelledby="what-h">
     <div class="wrap">
-      <h2 id="what-h">What I'm working on</h2>
+      <h2 id="what-h">Current areas of focus</h2>
       <ul class="ops-list">
-        <li><span class="tag">CLT</span>AI that runs the paperwork for small businesses and the trades</li>
-        <li><span class="tag">GOV</span>Getting subcontractors ready for federal and defense work</li>
-        <li><span class="tag">COM · MED</span>Own brands, products and media, built by the same crew</li>
+        <li><span class="tag">CLT</span>Applied AI operations for small businesses and the skilled trades: bids, documentation and back-office workflow.</li>
+        <li><span class="tag">GOV</span>Compliance readiness for federal and defense subcontractors: CMMC, flow-down clauses and controlled-information handling.</li>
+        <li><span class="tag">COM · MED</span>In-house brands, products and media, developed and produced by the same team.</li>
       </ul>
       <p class="fine">Not a certified assessor, and not legal advice.</p>
     </div>
@@ -429,7 +435,7 @@ header.board .wrap::after{bottom:14px;right:6px;border-left:0;border-top:0}
   <section class="sec" id="contact" aria-labelledby="contact-h">
     <div class="wrap contact">
       <h2 id="contact-h">Work with us</h2>
-      <div><p>We take on a small number of jobs at a time, mostly by referral. If someone sent you here, reach out through them and we'll set up a short call.</p><p class="quip">No reply? My phone's probably off. Call me and let me know.</p><p class="quip" id="quip">Replies may be written by AI. The typos are 100% me.</p></div>
+      <div><p class="lead-ref">First contact by referral only.</p><p class="quip" id="quip">Replies may be written by AI. The typos are 100% me.</p></div>
       <script>
       (function () {
         var q = [
@@ -509,10 +515,26 @@ header.board .wrap::after{bottom:14px;right:6px;border-left:0;border-top:0}
   items.forEach(function(el){ el.classList.add('reveal'); });
   document.querySelectorAll('.rows').forEach(function(ul){ [].slice.call(ul.children).forEach(function(li,i){ li.style.setProperty('--d',(i*0.08)+'s'); }); });
   if(!('IntersectionObserver' in window)){ items.forEach(function(el){el.classList.add('in')}); return; }
-  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); },{rootMargin:'0px 0px -8% 0px',threshold:0.08});
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); },{rootMargin:'0px 0px -50% 0px',threshold:0});
   items.forEach(function(el){ io.observe(el); });
   /* the divisions in FIG. 1 appear one by one after the lines draw */
   document.querySelectorAll('.fig .divs rect, .fig .divs text').forEach(function(n){ var y=+n.getAttribute('y')||0; n.style.transitionDelay=(0.9+y/900)+'s'; });
+})();
+</script>
+<script>
+/* wrap each line's text so it can wipe in left to right; observer adds .in once */
+(function(){
+  var lis=[].slice.call(document.querySelectorAll('.ops-list li')); if(!lis.length) return;
+  lis.forEach(function(li,i){
+    var tag=li.querySelector('.tag'), span=document.createElement('span'); span.className='txt';
+    [].slice.call(li.childNodes).forEach(function(n){ if(n!==tag) span.appendChild(n); });
+    li.appendChild(span); li.style.setProperty('--d',(i*0.35)+'s');
+  });
+  if(!('IntersectionObserver' in window)){ lis.forEach(function(li){li.classList.add('in')}); return; }
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ lis.forEach(function(li){li.classList.add('in')}); io.disconnect(); } }); },{rootMargin:'0px 0px -50% 0px',threshold:0});
+  io.observe(document.querySelector('.ops-list'));
+  /* near the page bottom, content can never reach mid-screen: reveal whatever is left */
+  addEventListener('scroll',function end(){ if(innerHeight+scrollY>=document.documentElement.scrollHeight-4){ document.querySelectorAll('.reveal,.ops-list li').forEach(function(el){el.classList.add('in')}); removeEventListener('scroll',end); } },{passive:true});
 })();
 </script>
 </body>
