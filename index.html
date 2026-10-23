@@ -312,6 +312,24 @@ header.board .wrap::after{bottom:14px;right:6px;border-left:0;border-top:0}
 .plaque.plaque-row{border:1px solid rgba(185,188,194,.35);border-left:3px solid var(--pin);background:rgba(15,18,22,.72);padding:18px 22px;outline:0}
 /* ROSTER-CSS */
 .roster .wrap{padding-block:36px 52px}.r-tot{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2px;margin:18px 0 10px;border:1px solid var(--groove)}.r-tot div{padding:12px;background:var(--plate)}.r-tot dt{font:600 12px/1 var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--letter-dim)}.r-tot dd{margin:6px 0 0;font:700 30px/1 var(--display);color:var(--letter);font-variant-numeric:tabular-nums}.r-tot div:last-child dd{color:var(--pin)}.r-key{color:var(--letter-dim);font-size:15px;max-width:60ch}.r-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px 28px;margin-top:22px}.r-div h3{font:600 15px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--letter);padding-bottom:10px;border-bottom:1px solid var(--groove);margin:0}.r-div h3 .code{color:var(--pin);margin-right:6px}.r-div ul{list-style:none;margin:0;padding:6px 0 0;display:grid;gap:8px}.r-div li{display:flex;justify-content:space-between;gap:10px;align-items:baseline;font-size:15px;color:var(--letter-soft)}.r-name{min-width:0;overflow-wrap:anywhere}.r-st{flex:none;font:600 11px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;padding:4px 7px;border:1px solid var(--letter-dim);color:var(--letter-dim)}.r-st.rv{border-style:dashed}.r-st.ap{color:var(--letter);border-color:var(--letter)}.r-st.bu{color:var(--pin);border-color:var(--pin)}.r-st.rd{color:var(--board);background:var(--pin);border-color:var(--pin)}@media (max-width:600px){.r-tot dd{font-size:24px}}
+/* serial: the speed of light in m/s, unlabeled on purpose */
+.serial{display:inline-block;margin-top:8px;font:500 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.18em;color:var(--letter-dim);opacity:.7;font-variant-numeric:tabular-nums}
+footer .serial{margin-top:0}
+/* ===== neural (2026-10-23) ===== */
+/* synapse mark before NRG: Gannon in the middle, three agents around; negative margins keep the line height as it was */
+.syn{display:inline-block;width:15px;height:15px;margin:-4px 6px -4px 0;vertical-align:2px;overflow:visible}
+/* 2e note: dotted underline; the note opens on hover, keyboard focus or tap, under the name inside the title block (absolute: no shift, no overflow) */
+.plaque-row>div{position:relative}
+.namecls abbr{text-decoration:underline dotted;text-decoration-color:var(--letter-dim);text-decoration-thickness:1px;text-underline-offset:4px;cursor:help}
+.namecls abbr::after{content:attr(data-tip);position:absolute;left:0;top:26px;z-index:5;width:max-content;max-width:100%;padding:8px 10px;background:var(--plate);border:1px solid var(--pin);color:var(--letter-soft);font:400 13px/1.45 var(--body);letter-spacing:0;text-transform:none;white-space:normal;pointer-events:none;opacity:0;visibility:hidden}
+.namecls abbr:hover::after,.namecls abbr:focus::after{opacity:1;visibility:visible}
+/* FIG. 1 neural pulse: a decoration layer drawn by script on top of the lines; the figure is complete without it */
+.fig .pulse{pointer-events:none}
+.fig .pulse circle{fill:var(--pin)}
+.fig .pulse .halo{opacity:.28}
+.fig .pulse .core{filter:drop-shadow(0 0 4px var(--pin))}
+.fig .pulse rect{fill:var(--pin);fill-opacity:.1;stroke:var(--pin);stroke-width:3;filter:drop-shadow(0 0 6px var(--pin))}
+@media (prefers-reduced-motion:reduce){.fig .pulse{display:none}}
 </style>
 </head>
 <body>
@@ -319,7 +337,7 @@ header.board .wrap::after{bottom:14px;right:6px;border-left:0;border-top:0}
 <header class="board" id="top">
   <div class="wrap">
     <div class="top">
-      <span class="brand"><b>NRG</b> <span class="by">· powered by</span> Gannon Talos Research Group</span>
+      <span class="brand"><b><svg class="syn" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M8 9.5V2.6M8 9.5L2.4 13.4M8 9.5L13.6 13.4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><g fill="currentColor"><circle cx="8" cy="9.5" r="2.2"/><circle cx="8" cy="2.4" r="1.6"/><circle cx="2.2" cy="13.5" r="1.6"/><circle cx="13.8" cy="13.5" r="1.6"/></g></svg>NRG</b> <span class="by">· powered by</span> Gannon Talos Research Group</span>
       <nav aria-label="Sections"><a href="#directory">Directory</a><a href="#what">Focus</a><a href="#contact">Contact</a></nav>
     </div>
 
@@ -334,8 +352,9 @@ header.board .wrap::after{bottom:14px;right:6px;border-left:0;border-top:0}
     <div class="plaque plaque-row">
       <img src="gannon.png" alt="Gannon: portrait in a hexagon frame" width="64" height="64">
       <div>
-        <b class="namecls">Gannon · Class: 2e</b>
+        <b class="namecls">Gannon · Class: <abbr tabindex="0" aria-label="2e: twice-exceptional, gifted and neurodivergent, at the same time" data-tip="Twice-exceptional: gifted and neurodivergent, at the same time.">2e</abbr></b>
         <p class="trait">Thinks in patterns. Learns by failing. Never stops attempting to optimize.</p>
+        <span class="serial" title="m/s">No. 299 792 458</span>
       </div>
     </div>
 
@@ -519,7 +538,7 @@ header.board .wrap::after{bottom:14px;right:6px;border-left:0;border-top:0}
 
 <footer>
   <div class="wrap egg-wrap"><p class="egg">Information on this site is general in nature and is not legal, financial or professional advice. All engagements are subject to a written agreement.</p></div>
-  <div class="wrap"><span><b>NRG</b> <span class="by">· powered by</span> Gannon Talos Research Group</span><span>© <span id="yr">2026</span></span></div>
+  <div class="wrap"><span><b><svg class="syn" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M8 9.5V2.6M8 9.5L2.4 13.4M8 9.5L13.6 13.4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><g fill="currentColor"><circle cx="8" cy="9.5" r="2.2"/><circle cx="8" cy="2.4" r="1.6"/><circle cx="2.2" cy="13.5" r="1.6"/><circle cx="13.8" cy="13.5" r="1.6"/></g></svg>NRG</b> <span class="by">· powered by</span> Gannon Talos Research Group</span><span><span class="serial">Unit 299-792-458</span> · © <span id="yr">2026</span></span></div>
 </footer>
 
 <script>
@@ -618,6 +637,87 @@ header.board .wrap::after{bottom:14px;right:6px;border-left:0;border-top:0}
   }
   var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ io.disconnect(); setTimeout(glide,2000); } }); },{threshold:0.6});
   io.observe(s);
+})();
+</script>
+<script>
+/* 2e note: a tap focuses the abbreviation so its note opens on phones too */
+(function(){ var a=document.querySelector('.namecls abbr'); if(a) a.addEventListener('click',function(){ a.focus(); }); })();
+</script>
+<script>
+/* FIG. 1 neural pulse: once, after the lines draw, a gold signal runs from GANNON to the three agents, then from Scout out to the ten divisions;
+   each box glows as the signal reaches it. Routes are read from the figure's own lines. Decoration only; nothing runs with reduced-motion on. */
+(function(){
+  var fig=document.querySelector('.fig'), svg=fig&&fig.querySelector('svg');
+  if(!svg||!('IntersectionObserver' in window)||!window.requestAnimationFrame) return;
+  function still(){ return window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches; }
+  if(still()) return;
+  var NS='http://www.w3.org/2000/svg';
+  function key(p){ return p[0]+','+p[1]; }
+  function far(a,b){ return Math.abs(b[0]-a[0])+Math.abs(b[1]-a[1]); }
+  /* the wiring: every line is "Mx yHx" or "Mx yVy"; split each at the points that sit on it, then link neighbours */
+  var segs=[], pts={}, adj={};
+  [].forEach.call(svg.querySelectorAll('.ln-brass path, .ln path'),function(p){
+    var m=/^M\s*([\d.]+)[\s,]+([\d.]+)\s*([HV])\s*([\d.]+)$/.exec((p.getAttribute('d')||'').trim()); if(!m) return;
+    var a=[+m[1],+m[2]], b=m[3]==='H'?[+m[4],a[1]]:[a[0],+m[4]];
+    segs.push([a,b]); pts[key(a)]=a; pts[key(b)]=b;
+  });
+  function link(a,b){ var d=far(a,b); (adj[key(a)]=adj[key(a)]||[]).push([b,d]); (adj[key(b)]=adj[key(b)]||[]).push([a,d]); }
+  segs.forEach(function(s){
+    var a=s[0], b=s[1], on=[];
+    for(var id in pts){ var q=pts[id];
+      if((a[0]===b[0]&&q[0]===a[0]&&q[1]>=Math.min(a[1],b[1])&&q[1]<=Math.max(a[1],b[1]))||
+         (a[1]===b[1]&&q[1]===a[1]&&q[0]>=Math.min(a[0],b[0])&&q[0]<=Math.max(a[0],b[0]))) on.push(q); }
+    on.sort(function(p,q){ return far(a,p)-far(a,q); });
+    for(var i=1;i<on.length;i++) link(on[i-1],on[i]);
+  });
+  function routes(src){ /* shortest paths from src (a few dozen points, plain Dijkstra) */
+    var dist={}, prev={}, todo={}; dist[key(src)]=0; todo[key(src)]=src;
+    for(;;){ var best=null; for(var id in todo){ if(best===null||dist[id]<dist[best]) best=id; } if(best===null) break;
+      var cur=todo[best]; delete todo[best];
+      (adj[best]||[]).forEach(function(e){ var n=key(e[0]), d=dist[best]+e[1]; if(dist[n]===undefined||d<dist[n]){ dist[n]=d; prev[n]=cur; todo[n]=e[0]; } }); }
+    return function(to){ var id=key(to); if(dist[id]===undefined) return null; var path=[to]; while(prev[id]){ path.unshift(prev[id]); id=key(prev[id]); } return path; };
+  }
+  function box(r){ return {el:r,x:+r.getAttribute('x'),y:+r.getAttribute('y'),w:+r.getAttribute('width'),h:+r.getAttribute('height')}; }
+  var leads=[].map.call(svg.querySelectorAll('rect.bx-brass'),box), divs=[].map.call(svg.querySelectorAll('.divs rect'),box);
+  if(leads.length<4||!divs.length) return;
+  var boss=leads[0], agents=leads.slice(1);
+  var scout=agents.filter(function(b){ return adj[key([b.x+b.w,b.y+b.h/2])]; })[0];
+  if(!scout) return;
+  function ease(u){ return -(Math.cos(Math.PI*u)-1)/2; }
+  function plen(p){ var n=0; for(var i=1;i<p.length;i++) n+=far(p[i-1],p[i]); return n; }
+  function at(p,s){ for(var i=1;i<p.length;i++){ var a=p[i-1], b=p[i], d=far(a,b); if(s<=d){ var f=d?s/d:0; return [a[0]+(b[0]-a[0])*f,a[1]+(b[1]-a[1])*f]; } s-=d; } return p[p.length-1]; }
+  /* one wave per phase: the front moves along every route at the same eased pace; a route's dot stops where its box begins */
+  function phase(src,targets,t0,dur){
+    var r=routes(src), out=[];
+    targets.forEach(function(b){ var p=r([b.x,b.y+b.h/2]); if(p&&p.length>1) out.push({box:b,path:p,len:plen(p)}); });
+    var L=Math.max.apply(null,out.map(function(o){ return o.len; }).concat([1]));
+    out.forEach(function(o){ var lo=0, hi=1; for(var i=0;i<24;i++){ var mid=(lo+hi)/2; if(ease(mid)*L<o.len) lo=mid; else hi=mid; } o.t0=t0; o.dur=dur; o.L=L; o.ta=t0+hi*dur; });
+    return out;
+  }
+  function el(tag,attrs,parent){ var n=document.createElementNS(NS,tag); for(var a in attrs) n.setAttribute(a,attrs[a]); parent.appendChild(n); return n; }
+  function run(){
+    if(still()) return;
+    var p1=phase([boss.x+boss.w,boss.y+boss.h/2],agents,0.12,0.85), arrive=0;
+    p1.forEach(function(o){ if(o.box===scout) arrive=o.ta; });
+    var p2=phase([scout.x+scout.w,scout.y+scout.h/2],divs,arrive+0.08,1.35), all=p1.concat(p2);
+    if(!p1.length) return;
+    var layer=el('g',{'class':'pulse','aria-hidden':'true'},svg);
+    var glows=[{box:boss,ta:0}].concat(all).map(function(o){ return {ta:o.ta,n:el('rect',{x:o.box.x,y:o.box.y,width:o.box.w,height:o.box.h,opacity:0},layer)}; });
+    all.forEach(function(o){ var g=el('g',{opacity:0},layer); el('circle',{'class':'halo',r:8},g); el('circle',{'class':'core',r:3.2},g); o.dot=g; });
+    var end=0; glows.forEach(function(g){ end=Math.max(end,g.ta+0.7); });
+    var start=null;
+    function frame(now){
+      if(start===null) start=now; var t=(now-start)/1000;
+      all.forEach(function(o){ var s=o.L*ease(Math.min(1,Math.max(0,(t-o.t0)/o.dur)));
+        if(t>=o.t0&&s<o.len){ var q=at(o.path,s); o.dot.setAttribute('transform','translate('+q[0].toFixed(1)+' '+q[1].toFixed(1)+')'); o.dot.setAttribute('opacity',1); } else o.dot.setAttribute('opacity',0); });
+      glows.forEach(function(g){ var d=t-g.ta, v=d<0?0:d<0.08?d/0.08:Math.max(0,1-(d-0.08)/0.55); g.n.setAttribute('opacity',v.toFixed(3)); });
+      if(t<end) requestAnimationFrame(frame); else layer.parentNode.removeChild(layer);
+    }
+    requestAnimationFrame(frame);
+  }
+  /* same trigger as the reveal: once, when FIG. 1 scrolls into view; start after the 1.65 s line draw */
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ io.disconnect(); setTimeout(run,1800); } }); },{rootMargin:'0px 0px -8% 0px',threshold:0.08});
+  io.observe(fig);
 })();
 </script>
 </body>
