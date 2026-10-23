@@ -326,6 +326,8 @@ footer .serial{margin-top:0}
 .fig .pulse .core{filter:drop-shadow(0 0 4px var(--pin))}
 .fig .pulse rect{fill:var(--pin);fill-opacity:.1;stroke:var(--pin);stroke-width:3;filter:drop-shadow(0 0 6px var(--pin))}
 @media (prefers-reduced-motion:reduce){.fig .pulse{display:none}}
+/* quips: one sentence group per line (Dad 10-23) */
+#quip{white-space:pre-line}
 </style>
 </head>
 <body>
@@ -539,14 +541,14 @@ footer .serial{margin-top:0}
   <section class="sec" id="contact" aria-labelledby="contact-h">
     <div class="wrap contact">
       <h2 id="contact-h">Work with us</h2>
-      <div><p class="lead-ref">First contact by referral only.</p><p class="quip" id="quip">Replies may be written by AI. The typos are 100% me.</p></div>
+      <div><p class="lead-ref">First contact by referral only.</p><p class="quip" id="quip">Replies may be written by AI.<br>The typos are 100% me.</p></div>
       <script>
       (function () {
         var q = [
-          "My AI drafts a reply in 3 seconds. I take 4 hours to say yes. Then I forget to hit send.",
-          "I'll get back to you as soon as one of my AI agents tells me you wrote. They're busy. Mostly with me.",
-          "Serious inquiries only. Unserious ones also welcome. Honestly, those are better.",
-          "Replies may be written by AI. The typos are 100% me."
+          "My AI drafts a reply in 3 seconds.\nI take 4 hours to say yes.\nThen I forget to hit send.",
+          "I'll get back to you as soon as one of my AI agents tells me you wrote.\nThey're busy. Mostly with me.",
+          "Serious inquiries only.\nUnserious ones also welcome.\nHonestly, those are better.",
+          "Replies may be written by AI.\nThe typos are 100% me."
         ];
         document.getElementById('quip').textContent = q[Math.floor(Math.random() * q.length)];
       })();
